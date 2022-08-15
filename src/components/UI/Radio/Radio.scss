@@ -1,0 +1,49 @@
+@import '../../../colors';
+
+.custom-radio {
+    & > span {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        user-select: none;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            border: 2px solid $color-light-dark;
+            border-radius: 50%;
+            margin-right: 0.5em;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            background-color: $color-primary;
+            display: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+    }
+
+    & > input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+
+        /* стили для радиокнопки, находящейся в состоянии checked */
+        &:checked + span::after {
+            display: inline-block;
+        }
+
+        /* стили для радиокнопки, находящейся в состоянии disabled */
+        &:disabled + span::before {
+            background-color: $color-light-gray;
+        }
+    }
+}

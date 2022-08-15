@@ -1,0 +1,40 @@
+@import '../../../colors';
+
+.custom-checkbox {
+    & > input {
+        height: 0;
+        width: 0;
+        visibility: hidden;
+
+        &:checked + span{
+            background: $color-primary;
+        }
+
+        &:checked + span:after{
+            left: calc(100% - 5px);
+            transform: translateX(-100%);
+        }
+    }
+
+    & > span {
+        cursor: pointer;
+        width: 36px;
+        height: 18.5px;
+        background: $color-light-dark;
+        display: block;
+        border-radius: 100px;
+        position: relative;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 2.5px;
+            left: 2.5px;
+            width: 13.5px;
+            height: 13.5px;
+            background: $color-primary-light;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+    }
+}

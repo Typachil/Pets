@@ -1,0 +1,42 @@
+@import '../../../colors';
+
+.label-default{
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    color: $color-light-dark;
+
+    &__input{
+        padding: 0 0 8px 8px;
+        font-size: 14px;
+        color: inherit;
+        background-color: inherit;
+        border: none;
+        border-bottom: 1px solid $color-bg-dark;
+
+        &:focus-visible{
+            outline: none;
+        }
+    }
+
+    &_valid, &_valid &__input{
+        color: $color-succes;
+        border-color: $color-succes;
+    }
+
+    &_error, &_error &__input{
+        color: $color-danger;
+        border-color: $color-danger;
+    }
+
+    &__message-error{
+        padding-top: 2px;
+        font-size: 8px;
+        align-self: flex-end;
+    }
+
+    &__text{
+        padding: 0 0 8px 6px;
+        font-size: 10px;
+    }
+}

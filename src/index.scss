@@ -1,0 +1,41 @@
+@import 'colors.scss';
+
+@font-face {
+    font-family: 'Rubik';
+    src: url(/public/fonts/eng/Rubik.ttf) format('truetype');
+    src: url(/public/fonts/eng/Rubik.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Rubik';
+    src: url(/public/fonts/ru/Rubik.ttf) format('truetype');
+    src: url(/public/fonts/ru/Rubik.woff) format('woff'); 
+}
+
+@font-face {
+    font-family: 'Rubik Bold';
+    src: url(/public/fonts/eng/Rubikbold.ttf) format('truetype');
+    src: url(/public/fonts/eng/Rubikbold.woff) format('woff');
+}
+
+@font-face {
+    font-family: 'Rubik Bold';
+    src: url(/public/fonts/ru/Rubikbold.ttf) format('truetype');
+    src: url(/public/fonts/ru/Rubikbold.woff) format('woff');
+}
+
+* {
+    font-family: 'Rubik', 'Times New Roman', sans-serif, serif;
+}
+
+body{
+    background-color: $color-primary-light;
+}
+
+.test{
+    color: aqua;
+}
+
+.test2{
+    background-color: aqua;
+}

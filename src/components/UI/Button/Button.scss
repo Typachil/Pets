@@ -1,0 +1,29 @@
+@import '../../../colors';
+
+.btn{
+    background-color: $color-primary;
+    border: none;
+    height: 48px;
+    font-size: 18px;
+    border-radius: 10px;
+    color: $color-primary-light;
+    cursor: pointer;
+
+    &_disabled{
+        background-color: $color-light-dark;
+    }
+
+    &_big-size{
+        width: 325px;
+    }
+
+    &_medium-size{
+        width: 270px;
+        height: 40px;
+    }
+
+    &:hover{
+        opacity: 0.8;
+    }
+
+}
