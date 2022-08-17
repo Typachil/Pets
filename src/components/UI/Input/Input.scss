@@ -19,6 +19,11 @@
         }
     }
 
+    &_dark-theme, &_dark-theme &__input{
+        color: $color-primary-light;
+        border-color: $color-primary-light;
+    }
+
     &_valid, &_valid &__input{
         color: $color-succes;
         border-color: $color-succes;

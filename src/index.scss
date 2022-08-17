@@ -26,9 +26,11 @@
 
 * {
     font-family: 'Rubik', 'Times New Roman', sans-serif, serif;
+    padding: 0;
+    margin: 0;
 }
 
-body{
+html{
     background-color: $color-primary-light;
 }
 
@@ -38,4 +40,16 @@ body{
 
 .test2{
     background-color: aqua;
+}
+
+.app{
+    min-height: 1000px;
+}
+
+.body-dark{
+    background-color: $color-bg-dark;
+}
+
+.body-light{
+    background-color: $color-primary-light;
 }

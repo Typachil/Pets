@@ -1,0 +1,35 @@
+@import '../../../colors';
+
+.search-bar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: none;
+    background-color: $color-primary;
+    position: relative;
+
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        width: 15px;
+        height: 2.5px;
+        background-color: $color-primary-light;
+        left: 35%;
+        border-radius: 10px;
+    }
+
+    &::before {
+        top:38%;
+        transform: rotate(40deg);
+    }
+
+    &::after {
+        bottom: 38%;
+        transform: rotate(140deg);
+    }
+
+    &_dark-theme{
+        background-color: $color-light-dark;
+    }
+}

@@ -8,6 +8,7 @@ interface IInputProps {
     errorMessage: string;
     valid: boolean;
     value: string;
+    darkTheme: boolean;
     onChange: () => void;
 }
 
@@ -16,11 +17,13 @@ const Input: FC<IInputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
     label, 
     errorMessage, 
     valid, 
-    value, 
+    value,
+    darkTheme, 
     onChange, 
     ...attrs 
 }) => {
     let computedClasses = classNames('label-default',{
+        "label-default_dark-theme": darkTheme,
         "label-default_valid": valid,
         "label-default_error": errorMessage
     }, classes)

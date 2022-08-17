@@ -1,6 +1,18 @@
 @import '../../../colors';
 
 .custom-radio {
+    display: flex;
+    align-items: center;
+    
+    &__label{
+        display: inline-block;
+        font-size: 10px;
+
+        &_dark-theme{
+            color: #FFF
+        }
+    }
+
     & > span {
         position: relative;
         display: inline-flex;
