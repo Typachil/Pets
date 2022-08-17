@@ -8,14 +8,14 @@ interface IAvatarProps {
     classes?: string;
     isOnline?: boolean;
     img?: string;
+    size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
     name: string;
-    size: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
 const Avatar:FC<IAvatarProps & React.ButtonHTMLAttributes<HTMLButtonElement> & React.AnchorHTMLAttributes<HTMLAnchorElement>> = ({
     href,
     classes,
-    size,
+    size = 'lg',
     img,
     name,
     isOnline,

@@ -9,8 +9,8 @@ interface IButtonProps {
     disabled?: boolean;
     loading?: boolean;
     onClick?: () => void;
+    size?: 'big' | 'medium';
     children: React.ReactNode;
-    size: "big" | "medium";
 }
 
 const Button: FC<IButtonProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ 
@@ -19,7 +19,7 @@ const Button: FC<IButtonProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & 
     disabled, 
     loading,
     onClick,
-    size, 
+    size = 'big', 
     children,
     ...attrs 
 }) => {
