@@ -43,6 +43,10 @@ module.exports = {
                     loader: 'ts-loader',
                 },
             },
+            {
+                test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
+                use: ["file-loader"],
+            },
         ]
     }
 }
