@@ -64,12 +64,12 @@ export default function App() {
                     value={selectValue}
                     darkTheme={darkTheme}
                     onChange={changeValueSelect}>
-                    <SelectItem disabled={true} name='Age' value='Десять'>
+                    <SelectItem disabled={true} value='Десять'>
                         Десять
                     </SelectItem>
                     <SelectItem value='Двадцать'>Двадцать</SelectItem>
                     <SelectItem value='Тридцать'>Тридцать</SelectItem>
-                    <SelectItem value='Сорок'>Сорок</SelectItem>
+                    <SelectItem value='Сорок'>Сорок</SelectItem>          
                 </Select>
             </div>
         </div>

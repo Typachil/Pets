@@ -1,18 +1,19 @@
 import React, { FC, useState } from 'react';
 import './Select.scss';
 import classNames from 'classnames';
+import { ISelectItemProps } from './SelectItem';
 
 interface ISelectProps {
+    name: string
+    value: string;
+    children?: React.ReactElement[];
     classes?: string;
     label?: string;
     onChange?: (e: any) => void;
-    name: string
-    value: string;
-    darkTheme: boolean;
-    children: any;
+    darkTheme?: boolean;
 }
 
-const Select: FC<ISelectProps & React.SelectHTMLAttributes<HTMLSelectElement>> = ({
+const Select: FC<ISelectProps & React.HTMLAttributes<HTMLDivElement>> = ({
     classes,
     label,
     value,
@@ -34,11 +35,11 @@ const Select: FC<ISelectProps & React.SelectHTMLAttributes<HTMLSelectElement>> =
     );
 
     return (
-        <div className={computedClasses} onClick={() => setOpenSelect(!openSelect)}>
+        <div className={computedClasses} onClick={() => setOpenSelect(!openSelect)} {...(attrs as React.HTMLAttributes<HTMLDivElement>)}>
             {label && <div className='__select-text'>{label}</div>}
             <div className='__select-title'>{value}</div>
             <div className='__select-content' onChange={onChange}>
-                {React.Children.map(children, (child, i) => {
+                {React.Children.map(children, (child : React.ReactElement, i) => {
                     return React.cloneElement(child, {
                         selectedValue: value,
                         name: name

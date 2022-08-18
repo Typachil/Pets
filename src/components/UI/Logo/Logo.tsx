@@ -3,13 +3,13 @@ import './Logo.scss';
 import classNames from 'classnames';
 
 interface ILogoProps {
-    size: 'sm' | 'md' | 'lg';
+    size?: 'sm' | 'md' | 'lg';
     classes?: string;
-    darkTheme: boolean;
+    darkTheme?: boolean;
 }
 
 const Logo: FC<ILogoProps & React.SVGAttributes<HTMLOrSVGElement>> = ({ 
-    size, 
+    size = 'md', 
     classes,
     darkTheme,
     ...attrs

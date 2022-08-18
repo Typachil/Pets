@@ -1,8 +1,13 @@
 @import '../../../colors';
 
+.radio-group{
+    display: flex;
+}
+
 .custom-radio {
     display: flex;
     align-items: center;
+    margin-right: 30px;
     
     &__label{
         display: inline-block;

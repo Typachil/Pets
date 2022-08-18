@@ -5,11 +5,12 @@ import classNames from 'classnames';
 interface IInputProps {
     classes?: string;
     label?: string;
+    darkTheme?: boolean;
+    onChange?: () => void;
+    placeholder?: string
     errorMessage: string;
     valid: boolean;
     value: string;
-    darkTheme: boolean;
-    onChange: () => void;
 }
 
 const Input: FC<IInputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
@@ -18,6 +19,7 @@ const Input: FC<IInputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
     errorMessage, 
     valid, 
     value,
+    placeholder,
     darkTheme, 
     onChange, 
     ...attrs 
@@ -33,7 +35,8 @@ const Input: FC<IInputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
             {label && <div className='label-default__text'>{label}</div>}
             <input type='text' value={value}
                 className='label-default__input' 
-                onChange={onChange} 
+                onChange={onChange}
+                placeholder={placeholder} 
                 {...(attrs as React.InputHTMLAttributes<HTMLInputElement>)}/>
             {errorMessage && <div className='label-default__message-error'>{errorMessage}</div>}
         </label>

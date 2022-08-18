@@ -6,20 +6,12 @@ export type Todo = {
     completed: boolean;
 }
 
-export const visible = { 
-    All : "All", 
-    Active: "Active", 
-    Completed: "Completed"
-};
-
 type State = {
-    list: Todo[],
-    visibleTodos: string
+    list: Todo[]
 }
 
 const initialState: State = {
     list: [],
-    visibleTodos: visible.All
 }
 
 
@@ -43,12 +35,9 @@ const todoSlice = createSlice({
         removeTodos(state){
             state.list = state.list.filter(todo => todo.completed === false);
         },
-        changeVisible(state,action: PayloadAction<string>){
-            state.visibleTodos = action.payload;
-        }
     }
 })
 
-export const {addTodo, toggleComplete, removeTodos, changeVisible} = todoSlice.actions;
+export const {addTodo, toggleComplete, removeTodos} = todoSlice.actions;
 
 export default todoSlice.reducer;

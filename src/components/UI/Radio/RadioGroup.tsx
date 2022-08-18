@@ -5,12 +5,12 @@ import classNames from 'classnames';
 interface IRadioGroupProps {
     value: string;
     name: string;
-    onChange: (e: any) => void;
+    onChange?: (e: any) => void;
     classes?: string;
-    children?: any;
+    children?: React.ReactElement[];
 }
 
-const RadioGroup: FC<IRadioGroupProps> = ({
+const RadioGroup: FC<IRadioGroupProps & React.HTMLAttributes<HTMLDivElement>> = ({
     value,
     name,
     classes,
@@ -18,11 +18,11 @@ const RadioGroup: FC<IRadioGroupProps> = ({
     children,
     ...attrs
 }) => {
-    let computedClasses = classNames(classes)
+    let computedClasses = classNames('radio-group', classes)
 
     return (
-        <div className={computedClasses} onClick={onChange}>
-            {React.Children.map(children, (child, i) => {
+        <div className={computedClasses} onClick={onChange} {...(attrs as React.HTMLAttributes<HTMLDivElement>)}>
+            {React.Children.map(children, (child : React.ReactElement, i) => {
                     return React.cloneElement(child, {
                         currentValue: value,
                         name: name

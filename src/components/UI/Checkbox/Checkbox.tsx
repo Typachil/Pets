@@ -4,8 +4,8 @@ import classNames from 'classnames';
 
 interface ICheckboxProps {
     classes?: string;
+    onClick?: () => void;
     checked: boolean;
-    onClick: () => void;
 }
 
 const Checkbox: FC<ICheckboxProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
