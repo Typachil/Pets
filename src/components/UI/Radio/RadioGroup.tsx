@@ -21,7 +21,7 @@ const RadioGroup: FC<IRadioGroupProps & React.HTMLAttributes<HTMLDivElement>> = 
     let computedClasses = classNames('radio-group', classes)
 
     return (
-        <div className={computedClasses} onClick={onChange} {...(attrs as React.HTMLAttributes<HTMLDivElement>)}>
+        <div className={computedClasses} onClick={onChange} {...attrs}>
             {React.Children.map(children, (child : React.ReactElement, i) => {
                     return React.cloneElement(child, {
                         currentValue: value,

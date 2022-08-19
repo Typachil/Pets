@@ -9,7 +9,7 @@ interface ISelectProps {
     children?: React.ReactElement[];
     classes?: string;
     label?: string;
-    onChange?: (e: any) => void;
+    onChange?: (e: React.MouseEventHandler<HTMLDivElement>) => void;
     darkTheme?: boolean;
 }
 
@@ -35,7 +35,7 @@ const Select: FC<ISelectProps & React.HTMLAttributes<HTMLDivElement>> = ({
     );
 
     return (
-        <div className={computedClasses} onClick={() => setOpenSelect(!openSelect)} {...(attrs as React.HTMLAttributes<HTMLDivElement>)}>
+        <div className={computedClasses} onClick={() => setOpenSelect(!openSelect)} {...attrs}>
             {label && <div className='__select-text'>{label}</div>}
             <div className='__select-title'>{value}</div>
             <div className='__select-content' onChange={onChange}>

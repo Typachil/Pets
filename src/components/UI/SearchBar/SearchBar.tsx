@@ -18,7 +18,7 @@ const SearchBar:FC<ISearchBarProps & React.ButtonHTMLAttributes<HTMLButtonElemen
         "search-bar_dark-theme": darkTheme,
     }, classes)
     return (
-        <button onClick={onClick} className={computedClasses} {...(attrs as React.ButtonHTMLAttributes<HTMLButtonElement>)}></button>
+        <button onClick={onClick} className={computedClasses} {...attrs}></button>
     )
 };
 

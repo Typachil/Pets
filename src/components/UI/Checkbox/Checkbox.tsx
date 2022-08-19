@@ -19,7 +19,7 @@ const Checkbox: FC<ICheckboxProps & React.InputHTMLAttributes<HTMLInputElement>>
     return (
         <>
             <label className={computedClasses}>
-                <input type='checkbox' onClick={onClick} checked={checked} {...(attrs as React.InputHTMLAttributes<HTMLInputElement>)}/>
+                <input type='checkbox' onClick={onClick} checked={checked} {...attrs}/>
                 <span></span>
                 <div></div>
             </label>

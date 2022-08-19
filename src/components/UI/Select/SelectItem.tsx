@@ -30,7 +30,7 @@ const SelectItem: FC<ISelectItemProps & React.LabelHTMLAttributes<HTMLLabelEleme
     }, classes)
         
     return (
-        <label className={computedClasses} {...(attrs as React.LabelHTMLAttributes<HTMLLabelElement>)}>
+        <label className={computedClasses} {...attrs}>
             <input disabled={disabled} type="radio" name={name} value={value} className='__select-input'/>
             {children}
         </label>

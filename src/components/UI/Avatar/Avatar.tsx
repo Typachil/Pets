@@ -9,7 +9,7 @@ interface IAvatarProps {
     isOnline?: boolean;
     img?: string;
     size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-    name: string;
+    name?: string;
 }
 
 const Avatar:FC<IAvatarProps & React.ButtonHTMLAttributes<HTMLButtonElement> & React.AnchorHTMLAttributes<HTMLAnchorElement>> = ({
@@ -25,11 +25,9 @@ const Avatar:FC<IAvatarProps & React.ButtonHTMLAttributes<HTMLButtonElement> & R
         [`avatar_size-${size}`]: size
     }, classes)
 
-    let splitName:string | string[] = name.toUpperCase().split(" ");
-    if(splitName.length >= 2) {
-        name = ""
-        splitName.forEach(item => name += item.slice(0, 1))
-    }
+    let splitName:string[] = name.trim().toUpperCase().split(" ");
+    name = "";
+    if(splitName.length >= 2) splitName.forEach(item => name += item.slice(0, 1));
     if(splitName.length === 1) name = splitName.join("").slice(0, 2);
 
     if(href){

@@ -37,7 +37,7 @@ const Input: FC<IInputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
                 className='label-default__input' 
                 onChange={onChange}
                 placeholder={placeholder} 
-                {...(attrs as React.InputHTMLAttributes<HTMLInputElement>)}/>
+                {...attrs}/>
             {errorMessage && <div className='label-default__message-error'>{errorMessage}</div>}
         </label>
     );

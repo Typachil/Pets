@@ -28,7 +28,7 @@ const Radio: FC<IRadioProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
                 checked={currentValue === value? true: false} 
                 name={name} 
                 value={value} 
-                {...(attrs as React.InputHTMLAttributes<HTMLInputElement>)}/>
+                {...attrs}/>
             <span></span>
             <div className={`custom-radio__label ${darkTheme && "custom-radio__label_dark-theme"}`}>{label}</div>
         </label>
