@@ -1,0 +1,47 @@
+@import '../../colors';
+
+.launch-screen {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 7vmax;
+    justify-content: center;
+
+    &__text {
+        font-family: 'Rubik Bold', sans-serif;
+        font-size: 64px;
+        justify-self: center;
+        align-self: start;
+        color: $color-light-dark;
+
+        @media screen and (max-width: 1919px) {
+            font-size: 48px;
+        }
+
+        @media screen and (max-width: 1279px) {
+            font-size: 36px;
+        }
+
+        @media screen and (max-width: 767px) {
+            font-size: 24px;
+        }
+    }
+}
+
+.logo_animation {
+    animation-duration: 2s;
+    animation-name: logo;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    justify-self: center;
+    align-self: center;
+}
+
+// @keyframes logo{
+//     from{
+//         transform: scale(1);
+//     }
+
+//     to{
+//         transform: scale(1.5);
+//     }
+// }
