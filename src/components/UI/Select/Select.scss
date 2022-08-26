@@ -1,14 +1,12 @@
-@import '../../../colors';
-
 .__select {
     width: 240px;
-    color: $color-light-dark;
+    color: var(--color-light-dark);
     padding: 0 0 8px 8px;
     font-size: 14px;
     color: inherit;
     background-color: inherit;
     border: none;
-    border-bottom: 1px solid $color-bg-dark;
+    border-bottom: 1px solid var(--color-bg-dark);
     position: relative;
     cursor: pointer;
 
@@ -39,7 +37,7 @@
         }
 
         .__select_dark-theme &::before, .__select_dark-theme &::after{
-            background-color: $color-primary-light;
+            background-color: var(--color-primary-light);
         }
     }
 
@@ -74,7 +72,7 @@
 
         &::-webkit-scrollbar-thumb {
             border-radius: 4px;
-            background-color: $color-primary;
+            background-color: var(--color-primary);
         }
     }
 
@@ -89,11 +87,11 @@
         transition: all 0.2s ease-out;
     
         &:hover {
-            color: $color-primary;
+            color: var(--color-primary);
         }
 
         &_checked{
-            color: $color-primary;
+            color: var(--color-primary);
         }
 
         &_disabled{
@@ -107,8 +105,8 @@
     }
 
     &_dark-theme {
-        border-color: $color-primary-light;
-        color: $color-primary-light;
+        border-color: var(--color-primary-light);
+        color: inherit;
     }
 
     &_active {

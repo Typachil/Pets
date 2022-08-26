@@ -1,11 +1,9 @@
-@import '../../../colors';
-
 .search-bar {
     width: 46px;
     height: 46px;
     border-radius: 50%;
     border: none;
-    background-color: $color-primary;
+    background-color: var(--color-primary);
     position: relative;
 
     &::before,
@@ -14,7 +12,7 @@
         position: absolute;
         width: 15px;
         height: 2.5px;
-        background-color: $color-primary-light;
+        background-color: var(--color-primary-light);
         left: 35%;
         border-radius: 10px;
     }
@@ -30,6 +28,6 @@
     }
 
     &_dark-theme{
-        background-color: $color-light-dark;
+        background-color: var(--color-light-dark);
     }
 }

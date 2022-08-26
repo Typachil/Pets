@@ -1,12 +1,12 @@
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import './Input.scss';
 import classNames from 'classnames';
 
 interface IInputProps {
     classes?: string;
     label?: string;
-    darkTheme?: boolean;
-    onChange?: () => void;
+    theme?: 'light' | 'dark';
+    onChange?: (e: ChangeEvent <HTMLInputElement>) => void;
     placeholder?: string
     errorMessage: string;
     valid: boolean;
@@ -20,12 +20,12 @@ const Input: FC<IInputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
     valid, 
     value,
     placeholder,
-    darkTheme, 
+    theme, 
     onChange, 
     ...attrs 
 }) => {
-    let computedClasses = classNames('label-default',{
-        "label-default_dark-theme": darkTheme,
+    let computedClasses = classNames('label-default', 
+        `label-default_${theme}-theme`, {
         "label-default_valid": valid,
         "label-default_error": errorMessage
     }, classes)

@@ -1,10 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import reducerTodo from "./reducers/reducerTodo";
+import reducerUser from "./reducers/reducerUser";
 import reducerUI from "./reducers/reducerUI";
 
-let rootReducer = combineReducers({
+const rootReducer = combineReducers({
     reducerUI,
-    reducerTodo
+    reducerUser
 })
 
 export const setupStore = () => {

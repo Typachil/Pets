@@ -25,10 +25,12 @@ const Avatar:FC<IAvatarProps & React.ButtonHTMLAttributes<HTMLButtonElement> & R
         [`avatar_size-${size}`]: size
     }, classes)
 
-    let splitName:string[] = name.trim().toUpperCase().split(" ");
-    name = "";
-    if(splitName.length >= 2) splitName.forEach(item => name += item.slice(0, 1));
-    if(splitName.length === 1) name = splitName.join("").slice(0, 2);
+    if(name){
+        let splitName:string[] = name.trim().toUpperCase().split(" ");
+        name = "";
+        if(splitName.length >= 2) splitName.forEach(item => name += item.slice(0, 1));
+        if(splitName.length === 1) name = splitName.join("").slice(0, 2);
+    }
 
     if(href){
         return (

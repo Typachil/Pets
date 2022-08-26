@@ -1,7 +1,64 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../../components/UI/Button/Button';
+import Input from '../../components/UI/Input/Input';
+import Logo from '../../components/UI/Logo/Logo';
+import { useAppSelector } from '../../hooks/redux';
+import useInput from '../../hooks/useInput';
+import { REGISTRATION_ROUTE } from '../../utils/constRoutes';
+import './AuthPage.scss'
 
 export default function AuthPage() {
-  return (
-    <div>AuthPage</div>
-  )
+    const { theme, screen} = useAppSelector((state) => state.reducerUI);
+    const formEmail = useInput('', { isEmail: true });
+    const formPassword = useInput('');
+
+    let imgName = 'image-4';
+    if(theme === 'dark' && screen === 'laptop') imgName = 'image-2';
+    if(theme === 'light' && screen === 'laptop') imgName = 'image-1';
+
+    const loginUser = () => {
+        formEmail.onBlur()
+        formPassword.onBlur()      
+    }
+
+    return (
+        <div className='auth-block'>
+            {(screen === 'laptop' || screen === 'desktop') && 
+                <img src={`./img/auth/${imgName}.png`} alt='Image' className='auth-block__img' />
+            }
+            <div className='auth-wrapper'>
+                <div className='auth-form'>
+                    <Logo size='md' theme={theme} />
+                    <h1>Вход</h1>
+                    <p>Войдите в систему сейчас, чтобы получить доступ к вашим питомцам</p>
+                    <form>
+                        <Input
+                            theme={theme}
+                            label='Адресс эл.почты'
+                            onChange={formEmail.onChange}
+                            onBlur={formEmail.onBlur}
+                            valid={formEmail.inputValid}
+                            errorMessage={formEmail.errorMessage}
+                            value={formEmail.value} />
+                        <Input
+                            theme={theme}
+                            label='Пароль'
+                            onChange={formPassword.onChange}
+                            onBlur={formPassword.onBlur}
+                            valid={formPassword.inputValid}
+                            errorMessage={formPassword.errorMessage}
+                            value={formPassword.value} />
+                        <Button 
+                            disabled={formEmail.errorMessage || formPassword.errorMessage}
+                            onClick={loginUser}>Войти</Button>
+                    </form>
+                    <div className='auth-redirect'>
+                        <p>У вас ещё нет аккаунта?</p>
+                        <Link to={REGISTRATION_ROUTE}>Зарегистрироваться</Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
 }

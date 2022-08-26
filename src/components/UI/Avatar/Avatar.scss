@@ -1,9 +1,7 @@
-@import '../../../colors';
-
 .avatar {
     border-radius: 50%;
     border: none;
-    background: $color-purple-gradient;
+    background: var(--color-primary);
     position: relative;
 
     &__children {

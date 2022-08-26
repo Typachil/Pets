@@ -5,6 +5,7 @@ import classNames from 'classnames';
 interface IRadioGroupProps {
     value: string;
     name: string;
+    theme?: 'light' | 'dark';
     onChange?: (e: any) => void;
     classes?: string;
     children?: React.ReactElement[];
@@ -14,6 +15,7 @@ const RadioGroup: FC<IRadioGroupProps & React.HTMLAttributes<HTMLDivElement>> = 
     value,
     name,
     classes,
+    theme,
     onChange,
     children,
     ...attrs
@@ -25,7 +27,8 @@ const RadioGroup: FC<IRadioGroupProps & React.HTMLAttributes<HTMLDivElement>> = 
             {React.Children.map(children, (child : React.ReactElement, i) => {
                     return React.cloneElement(child, {
                         currentValue: value,
-                        name: name
+                        name,
+                        theme
                     })
             })}
         </div>

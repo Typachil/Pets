@@ -1,5 +1,3 @@
-@import '../../colors';
-
 .launch-screen {
     min-height: 100vh;
     display: grid;
@@ -7,11 +5,11 @@
     justify-content: center;
 
     &__text {
-        font-family: 'Rubik Bold', sans-serif;
         font-size: 64px;
+        font-weight: 700;
         justify-self: center;
         align-self: start;
-        color: $color-light-dark;
+        color: inherit;
 
         @media screen and (max-width: 1919px) {
             font-size: 48px;
@@ -32,16 +30,61 @@
     animation-name: logo;
     animation-iteration-count: infinite;
     animation-direction: alternate-reverse;
-    justify-self: center;
     align-self: center;
 }
 
-// @keyframes logo{
-//     from{
-//         transform: scale(1);
-//     }
+.start-screen{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
 
-//     to{
-//         transform: scale(1.5);
-//     }
-// }
+    @media screen and (max-width: 376px) {
+        justify-content: flex-end;
+    }
+
+    &__logo-block{
+        margin-bottom: 130px;
+    }
+
+    &__links{
+        @media screen and (max-width: 376px) {
+            margin-bottom: 55px;
+        }
+    }
+
+    &__heading{
+        font-family: 'Rubik Bold', sans-serif;
+        margin-top: 34px;
+    }
+
+    &__desc{
+        font-weight: 500;
+        font-size: 20px;
+        width: 278px;
+    }
+
+    &__question{
+        font-size: 18px;
+        margin-top: 20px;
+    }
+}
+
+.register-link{
+    text-decoration: none;
+    font-weight: 700;
+    color: inherit;
+    font-size: 18px;
+}
+
+@keyframes logo{
+    from{
+        transform: scale(1);
+    }
+
+    to{
+        transform: scale(1.5);
+    }
+}

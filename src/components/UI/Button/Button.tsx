@@ -41,10 +41,11 @@ const Button: FC<IButtonProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & 
     }
 
     return (
-        <button type={'button'} 
-            {...(attrs as React.ButtonHTMLAttributes<HTMLButtonElement>)} 
+        <button type={'button'}
+            onClick={onClick} 
             className={computedClasses} 
-            disabled={disabled}>
+            disabled={disabled}
+            {...(attrs as React.ButtonHTMLAttributes<HTMLButtonElement>)}>
             {loading ?
                 '...':
                 children

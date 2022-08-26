@@ -10,7 +10,7 @@ interface ISelectProps {
     classes?: string;
     label?: string;
     onChange?: (e: React.MouseEventHandler<HTMLDivElement>) => void;
-    darkTheme?: boolean;
+    theme?: 'light' | 'dark';
 }
 
 const Select: FC<ISelectProps & React.HTMLAttributes<HTMLDivElement>> = ({
@@ -18,7 +18,7 @@ const Select: FC<ISelectProps & React.HTMLAttributes<HTMLDivElement>> = ({
     label,
     value,
     name,
-    darkTheme,
+    theme,
     children,
     onChange,
     ...attrs
@@ -27,8 +27,8 @@ const Select: FC<ISelectProps & React.HTMLAttributes<HTMLDivElement>> = ({
 
     let computedClasses = classNames(
         '__select',
+        `__select_${theme}-theme`,
         {
-            '__select_dark-theme': darkTheme,
             __select_active: openSelect,
         },
         classes

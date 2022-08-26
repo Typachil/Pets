@@ -5,17 +5,17 @@ import classNames from 'classnames';
 interface ILogoProps {
     size?: 'sm' | 'md' | 'lg';
     classes?: string;
-    darkTheme?: boolean;
+    theme?: 'light' | 'dark';
 }
 
 const Logo: FC<ILogoProps & React.SVGAttributes<HTMLOrSVGElement>> = ({ 
     size = 'md', 
     classes,
-    darkTheme,
+    theme,
     ...attrs
 }) => {
-    const fillMainColor = darkTheme ? '#FFFFFF' : '#0F172A';
-    const fillSecondColor = darkTheme ? '#0F172A' : '#FFFFFF';
+    const fillMainColor = theme === 'dark' ? '#FFFFFF' : '#0F172A';
+    const fillSecondColor = theme === 'dark' ? '#0F172A' : '#FFFFFF';
     let computedClasses = classNames('logo',
     {
         [`logo-${size}`]: size,

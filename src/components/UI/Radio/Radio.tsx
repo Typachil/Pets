@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 interface IRadioProps {
     value: string;
-    darkTheme?: boolean;
+    theme?: 'light' | 'dark';
     name?: string;
     label?: string;
     currentValue?: string;
@@ -13,7 +13,7 @@ interface IRadioProps {
 
 const Radio: FC<IRadioProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
     value,
-    darkTheme,
+    theme,
     name,
     label,
     currentValue,
@@ -30,7 +30,7 @@ const Radio: FC<IRadioProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
                 value={value} 
                 {...attrs}/>
             <span></span>
-            <div className={`custom-radio__label ${darkTheme && "custom-radio__label_dark-theme"}`}>{label}</div>
+            <div className={`custom-radio__label ${theme === 'dark' && "custom-radio__label_dark-theme"}`}>{label}</div>
         </label>
     );
 };

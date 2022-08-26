@@ -1,0 +1,57 @@
+@mixin display-flex{
+    display: flex;
+    align-items: center;
+}
+
+.sidebar{
+    width: 100px;
+    height: 100%;
+    position: fixed;
+    border-right: 1px solid var(--accent-color);
+    @include display-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+
+    &-navigate{
+        @include display-flex;
+        flex-direction: column;       
+
+        &__logo{
+            margin-top: 35px;
+            margin-bottom: 85px;
+        }
+
+        &__link{
+            width: 60px;
+            height: 60px;
+            @include display-flex;
+            justify-content: center;
+            border-radius: 13px;
+            margin-bottom: 20px;
+
+        }
+
+        &__logout{
+            border: none;
+            background: none;
+            cursor: pointer;
+            margin-bottom: 30px;
+        }
+
+        .active{
+            background-color: var(--color-primary);
+
+            path{
+                stroke: var(--color-primary-light);
+                fill: var(--color-primary-light);
+            }
+
+            svg[id = 'pets']{
+                path{
+                    fill: none
+                }
+            }
+        }
+    }
+}

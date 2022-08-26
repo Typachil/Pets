@@ -1,5 +1,3 @@
-@import 'colors.scss';
-
 @font-face {
     font-family: 'Rubik';
     src: url(/public/fonts/eng/Rubik.ttf) format('truetype');
@@ -9,7 +7,7 @@
 @font-face {
     font-family: 'Rubik';
     src: url(/public/fonts/ru/Rubik.ttf) format('truetype');
-    src: url(/public/fonts/ru/Rubik.woff) format('woff'); 
+    src: url(/public/fonts/ru/Rubik.woff) format('woff');
 }
 
 @font-face {
@@ -30,6 +28,41 @@
     margin: 0;
 }
 
-html{
-    background-color: $color-primary-light;
+:root{
+    --color-primary-light: #EDF2F7;
+    --color-solid-white: #FFFFFF;
+    --color-bg-dark: #0F172A;
+    --color-light-dark: #334155;
+    --color-primary: #4C6FFF;
+    --color-succes: #66CB9F;
+    --color-danger: #F16063;
+    --color-light-gray: #D5D5DC;
+    --color-dark-light-theme: #17171B;
+    --color-purple-gradient: linear-gradient(225deg, #D665FF 0%, #4C6FFF 100%);
+    --color-black-gradient: linear-gradient(225deg, #29272E 0%, #27272E 100%);
+    --color-orange-gradient: linear-gradient(225deg, #FFC656 0%, #F16063 100%);
+    --color-yellow-gradient: linear-gradient(225deg, #FFEF5E 0%, #F7936F 100%);
+    --color-pink-gradient: linear-gradient(224.47deg, #FF92AE 8.18%, #FF3D9A 95.84%);
+    --color-green-gradient: linear-gradient(225deg, #67E9F1 0%, #24E795 100%);
+}
+
+:root[data-theme="light"] {
+    --background-color: var(--color-primary-light);
+    --background-color-secondary: var(--color-solid-white);
+    --text-color: var(--color-light-dark);
+    --text-color-secondary: var(--color-bg-dark);
+    --accent-color: var(--color-light-gray);
+}
+
+:root[data-theme="dark"] {
+    --background-color: var(--color-bg-dark);
+    --background-color-secondary: var(--color-light-dark);
+    --text-color: var(--color-primary-light);
+    --text-color-secondary: var(--color-light-gray);
+    --accent-color: var(--color-light-dark);
+}
+
+body {
+    background: var(--background-color);
+    color: var(--text-color);
 }
