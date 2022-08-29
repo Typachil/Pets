@@ -1,0 +1,129 @@
+@mixin display-flex{
+    display: flex;
+    align-items: center;
+}
+
+.modal-nav{
+    height: 100%;
+    width: 375px;
+    position: fixed;
+    background-color: var(--background-color);
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: opacity 1s;
+
+    @media screen and (max-width: 767px){
+        width: 100%
+    }
+
+    &_active{
+        opacity: 1;
+    }
+    
+    &__navigate{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;          
+    }
+
+    &__logo{
+        margin-top: 35px;
+        margin-bottom: 85px;
+    }
+
+    &__link{
+        height: 60px;
+        @include display-flex;
+        border-radius: 13px;
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 700;
+        
+        &:nth-child(2){
+            & > .modal-nav__icon{
+                background: var(--color-purple-gradient);
+            }
+        }
+        &:nth-child(3){
+            & > .modal-nav__icon{
+                background: var(--color-orange-gradient);
+            }
+        }
+        &:nth-child(4){
+            & > .modal-nav__icon{
+                background: var(--color-yellow-gradient);
+            }
+        }
+        &:nth-child(5){
+            & > .modal-nav__icon{
+                background: var(--color-pink-gradient);
+            }
+        }
+        &:nth-child(6){
+            & > .modal-nav__icon{
+                background: var(--color-green-gradient);
+            }
+        }
+    }
+
+    &__icon{
+        margin-right: 10px;
+        width: 46px;
+        height: 46px;
+        border-radius: 8px;
+        border: none;
+        @include display-flex;
+        justify-content: center;
+        background-color: var(--color-primary);
+
+        @media screen and (max-width: 767px){
+            width: 32px;
+            height: 32px;
+        }
+    }
+
+    &__logout{
+        @include display-flex;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 60px;
+        font-weight: 700;
+    }
+
+    &__close{
+        width: 46px;
+        height: 46px;
+        background-color: var(--color-primary);
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 50px;
+        position: relative;
+        @include display-flex;
+        justify-content: center;
+
+        &::after, &::before{
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 2px;
+            background-color: var(--color-primary-light);
+            border-radius: 1px;
+        }
+
+        @media screen and (max-width: 767px){
+            width: 32px;
+            height: 32px;
+        }
+
+        &::after{
+            transform: rotate(135deg);
+        }
+
+        &::before{
+            transform: rotate(45deg);
+        }
+    }
+}

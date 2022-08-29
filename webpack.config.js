@@ -4,10 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: ['@babel/polyfill','./src/index.tsx'],
+    entry: ['@babel/polyfill', './src/index.tsx'],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].js'
+        filename: '[name].[hash].js',
     },
     devServer: {
         historyApiFallback: true,
@@ -15,26 +15,19 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
-    plugins: [
-        new HtmlWebpackPlugin({ template: './public/index.html' }),
-        new CleanWebpackPlugin()
-    ],
+    plugins: [new HtmlWebpackPlugin({ template: './public/index.html' }), new CleanWebpackPlugin()],
     module: {
         rules: [
             {
                 test: /\.s[ac]ss$/i,
-                use: [
-                  "style-loader",
-                  "css-loader",
-                  "sass-loader",
-                ],
+                use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.m?js$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
-                }
+                },
             },
             {
                 test: /\.tsx?$/,
@@ -45,8 +38,22 @@ module.exports = {
             },
             {
                 test: /\.(jpg|jpeg|gif|mp3)$/,
-                use: ["file-loader"],
+                use: ['file-loader'],
             },
-        ]
-    }
-}
+            {
+                test: /\.svg$/,
+                use: [
+                    {
+                        loader: 'babel-loader',
+                    },
+                    {
+                        loader: 'react-svg-loader',
+                        options: {
+                            jsx: true, // true outputs JSX tags
+                        },
+                    },
+                ],
+            },
+        ],
+    },
+};

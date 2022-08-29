@@ -42,11 +42,21 @@
         width: 110px;
         height: 46px;
         cursor: pointer;
+
+        @media screen and (max-width: 767px){
+            width: 77px;
+            height: 32px;
+
+            & > div{
+                background-size: 15%;
+            }
+        }
+
         & > div{
             position: absolute;
             width: 100%;
             height: 100%;
-            background-image: url('/public/img/icons/moon.svg'), url('/public/img/icons/sun.svg');
+            background-image: url('/public/img/icons/moon.png'), url('/public/img/icons/sun.png');
             background-position: 20%, 80%;
             background-repeat: no-repeat;
         }

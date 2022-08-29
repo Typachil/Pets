@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 interface ICheckboxProps {
     classes?: string;
-    onClick?: () => void;
+    onChange?: () => void;
     variant?: 'standart' | 'theme'
     checked: boolean;
 }
@@ -13,7 +13,7 @@ const Checkbox: FC<ICheckboxProps & React.InputHTMLAttributes<HTMLInputElement>>
     classes,
     checked,
     variant = 'standart',
-    onClick,
+    onChange,
     ...attrs
 }) => {
     let computedClasses = classNames('custom-checkbox', {
@@ -23,7 +23,7 @@ const Checkbox: FC<ICheckboxProps & React.InputHTMLAttributes<HTMLInputElement>>
     return (
         <>
             <label className={computedClasses}>
-                <input type='checkbox' onClick={onClick} checked={checked} {...attrs}/>
+                <input type='checkbox' onClick={onChange} checked={checked} {...attrs}/>
                 <span></span>
                 <div></div>
             </label>

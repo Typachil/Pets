@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button/Button';
 import Logo from '../../components/UI/Logo/Logo';
 import { useAppSelector } from '../../hooks/redux';
+import { useGetPetsQuery } from '../../store/services/PetsService';
 import { HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/constRoutes';
 import './StartScreen.scss'
 

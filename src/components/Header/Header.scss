@@ -6,6 +6,12 @@
     justify-content: space-between;
     padding: 35px 30px 0 0;
 
+    @media screen and (max-width: 1279px) {
+        width: calc(100% - 50px);
+        left: 25px;
+        padding-right: 25px;
+    }
+
     &-actions{
         display: flex;
 
@@ -22,6 +28,15 @@
             border: none;
             margin-right: 18px;
 
+            @media screen and (max-width: 767px) {
+                width: 32px;
+                height: 32px;
+                svg{
+                    width: 9px;
+                    height: 11px;
+                }
+            }
+
             &_online{
                 &::before{
                     position: absolute;
@@ -32,7 +47,49 @@
                     border-radius: 50%;
                     right: 5px;
                     top: 2px;
+
+                    @media screen and (max-width: 767px){
+                        width: 6px;
+                        height: 6px;
+                        right: 2px;
+                    }
                 }
+            }
+        }
+    }
+
+    &__modal-button{
+        width: 46px;
+        height: 46px;
+        border-radius: 7px;
+        background-color: var(--color-primary);
+        border: 0;
+        padding: 15px 11px;
+
+        div{
+            height: 3px;
+            width: 100%;
+            border-radius: 1px;
+            background-color: var(--color-primary-light);
+            margin-bottom:4px;
+
+            &:nth-child(2){
+                width: 75%;
+            }
+
+            &:last-child{
+                width: 50%;
+                margin-bottom: 0;
+            }
+        }
+
+        @media screen and (max-width: 767px){
+            width: 32px;
+            height: 32px;
+            padding: 10px 8px;
+
+            & div{
+                height: 2px;
             }
         }
     }

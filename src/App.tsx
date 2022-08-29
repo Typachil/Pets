@@ -14,10 +14,14 @@ import StartScreen from './pages/StartScreen/StartScreen';
 import RegisterPage from './pages/AuthPage/RegisterPage';
 import AuthPage from './pages/AuthPage/AuthPage';
 import { BLOG_ROUTE, CHAT_ROUTE, ERROR_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PETS_DETAIL, PETS_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, START_ROUTE } from './utils/constRoutes';
+import { useGetPetsQuery, useGetPostsQuery, useGetStatisticQuery } from './store/services/PetsService';
 
 export default function App() {
     const dispatch = useAppDispatch();
-    const {theme} = useAppSelector(state => state.reducerUI)
+    const {theme} = useAppSelector(state => state.reducerUI);
+    useGetPetsQuery();
+    useGetPostsQuery();
+    useGetStatisticQuery();
     
     const subscribeChangeScreen = () =>{
         dispatch(changeScreen(window.innerWidth))
