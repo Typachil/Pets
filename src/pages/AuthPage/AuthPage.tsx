@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 import Logo from '../../components/UI/Logo/Logo';
+import getRandomInt from '../../hooks/getRandomInt';
 import { useAppSelector } from '../../hooks/redux';
 import useInput from '../../hooks/useInput';
 import { REGISTRATION_ROUTE } from '../../utils/constRoutes';
@@ -13,19 +14,17 @@ export default function AuthPage() {
     const formEmail = useInput('', { isEmail: true });
     const formPassword = useInput('');
 
-    let imgName = 'image-4';
-    if(theme === 'dark' && screen === 'laptop') imgName = 'image-2';
-    if(theme === 'light' && screen === 'laptop') imgName = 'image-1';
-
     const loginUser = () => {
         formEmail.onBlur()
         formPassword.onBlur()      
     }
 
+    const memoGetRandomInt = useMemo(() => getRandomInt(1, 4), [])
+
     return (
         <div className='auth-block'>
             {(screen === 'laptop' || screen === 'desktop') && 
-                <img src={`./img/auth/${imgName}.png`} alt='Image' className='auth-block__img' />
+                <img src={`./img/auth/image-${memoGetRandomInt}.png`} alt='Image' className='auth-block__img' />
             }
             <div className='auth-wrapper'>
                 <div className='auth-form'>

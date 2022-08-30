@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 import Logo from '../../components/UI/Logo/Logo';
+import getRandomInt from '../../hooks/getRandomInt';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import useInput from '../../hooks/useInput';
 import { registration } from '../../store/reducers/reducerUser';
@@ -17,9 +18,7 @@ export default function RegisterPage() {
     const formEmail = useInput('', { isEmail: true });
     const formPassword = useInput('', { minLength: 4 });
 
-    let imgName = 'image-1';
-    if(theme === 'dark' && screen === 'laptop') imgName = 'image-3';
-    if(theme === 'light' && screen === 'laptop') imgName = 'image-4';
+    const memoGetRandomInt = useMemo(() => getRandomInt(1, 4), [])
 
     const registrationUser = () => {
         formName.onBlur()
@@ -39,7 +38,7 @@ export default function RegisterPage() {
     return (
         <div className='auth-block'>
             {(screen === 'laptop' || screen === 'desktop') && 
-                <img src={`./img/auth/${imgName}.png`} alt='Image' className='auth-block__img' />
+                <img src={`./img/auth/image-${memoGetRandomInt}.png`} alt='Image' className='auth-block__img' />
             }
             <div className='auth-wrapper'>
                 <div className='auth-form'>

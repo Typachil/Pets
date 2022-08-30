@@ -8,7 +8,7 @@ interface IInputProps {
     theme?: 'light' | 'dark';
     onChange?: (e: ChangeEvent <HTMLInputElement>) => void;
     placeholder?: string
-    errorMessage: string;
+    errorMessage?: string;
     valid: boolean;
     value: string;
 }

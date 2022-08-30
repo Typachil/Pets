@@ -29,7 +29,6 @@
             justify-content: center;
             border-radius: 13px;
             margin-bottom: 20px;
-
         }
 
         &__logout{
@@ -42,16 +41,23 @@
         .active{
             background-color: var(--color-primary);
 
-            path{
-                stroke: var(--color-primary-light);
-                fill: var(--color-primary-light);
-            }
-
-            svg[id = 'pets']{
-                path{
-                    fill: none
+            svg{
+                path[stroke]{
+                    stroke: var(--color-primary-light);
+                }
+                path[fill]{
+                    fill: var(--color-primary-light);
                 }
             }
+        }
+    }
+
+    svg{
+        path[stroke]{
+            stroke: var(--text-color);
+        }
+        path[fill]{
+            fill: var(--text-color);
         }
     }
 }

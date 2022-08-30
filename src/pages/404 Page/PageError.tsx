@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import getRandomInt from '../../hooks/getRandomInt';
 import './PageError.scss';
 
 export default function () {
@@ -24,10 +25,8 @@ export default function () {
             img: 'Dog.svg',
         },
     ];
-    const getRandomInt = (max: number) => {
-        return Math.floor(Math.random() * max);
-    };
-    const memoGetRandomInt = useMemo(() => getRandomInt(4), [])
+    
+    const memoGetRandomInt = useMemo(() => getRandomInt(1, 4), [])
     const {heading, text, img} = arrayError[memoGetRandomInt]
 
     return (

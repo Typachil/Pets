@@ -3,15 +3,10 @@ import classNames from 'classnames';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/redux';
 import { logout } from '../../store/reducers/reducerUser';
-import {
-    BLOG_ROUTE,
-    CHAT_ROUTE,
-    HOME_ROUTE,
-    LOGIN_ROUTE,
-    PETS_ROUTE,
-    PROFILE_ROUTE,
-} from '../../utils/constRoutes';
+import { LOGIN_ROUTE } from '../../utils/constRoutes';
 import './ModalNav.scss';
+import { navItemsArr } from '../Sidebar/navItemsArr';
+import LogoutIcon from '../Sidebar/icons/Logout.svg';
 
 interface PropsModal{
     visible? : boolean
@@ -35,40 +30,20 @@ const ModalNav:FC<PropsModal> = ({visible, onClick}) => {
         <div className={modalClass}>
             <div className='modal-nav__navigate'>
                 <button className='modal-nav__close' onClick={onClick}></button>
-                <NavLink to={HOME_ROUTE.path} className='modal-nav__link' onClick={onClick}>
-                    <div className='modal-nav__icon'>
-                        <img alt='Home' src='img/icons/Home.png'/>
-                    </div>
-                    <span>Home</span>
-                </NavLink>
-                <NavLink to={PETS_ROUTE.path} className='modal-nav__link' onClick={onClick}>
-                    <div className='modal-nav__icon'>
-                        <img alt='Pets' src='img/icons/Pets.png'/>
-                    </div>
-                    <span>Pets</span>
-                </NavLink>
-                <NavLink to={BLOG_ROUTE.path} className='modal-nav__link' onClick={onClick}>
-                    <div className='modal-nav__icon'>
-                        <img alt='Blog' src='img/icons/Blog.png'/>
-                    </div>
-                    <span>Blog</span>
-                </NavLink>
-                <NavLink to={CHAT_ROUTE.path} className='modal-nav__link' onClick={onClick}>
-                    <div className='modal-nav__icon'>
-                        <img alt='Chat' src='img/icons/Chat.png'/>
-                    </div>
-                    <span>Chat</span>
-                </NavLink>
-                <NavLink to={PROFILE_ROUTE.path} className='modal-nav__link' onClick={onClick}>
-                    <div className='modal-nav__icon'>
-                        <img alt='Profile' src='img/icons/Profile.png'/>
-                    </div>
-                    <span>Profile</span>
-                </NavLink>
+                {navItemsArr.map((item, index) => {
+                    return (
+                        <NavLink key={index} to={item.path} className='modal-nav__link' onClick={onClick}>
+                            <div className='modal-nav__icon'>
+                                <item.icon viewBox="0 0 24 24"/>
+                            </div>
+                            <span>{item.title}</span>
+                        </NavLink>
+                    )
+                })}          
             </div>
             <div className='modal-nav__logout' onClick={logoutUser}>
                 <button className='modal-nav__icon'>
-                    <img alt='Logout' src='img/icons/Logout.png'></img>
+                    <LogoutIcon viewBox="0 0 24 24"/>
                 </button>
                 <span>Logout</span>
             </div>
