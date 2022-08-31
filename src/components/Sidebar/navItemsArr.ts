@@ -7,6 +7,11 @@ import ProfileIcon from './icons/Profile.svg';
 
 export const navItemsArr = [
     {
+        icon: HomeIcon,
+        title: 'Home',
+        path: HOME_ROUTE.path
+    },
+    {
         icon: ProfileIcon,
         title: 'Profile',
         path: PROFILE_ROUTE.path
@@ -15,11 +20,6 @@ export const navItemsArr = [
         icon: PetsIcon,
         title: 'Pets',
         path: PETS_ROUTE.path
-    },
-    {
-        icon: HomeIcon,
-        title: 'Home',
-        path: HOME_ROUTE.path
     },
     {
         icon: BlogIcon,

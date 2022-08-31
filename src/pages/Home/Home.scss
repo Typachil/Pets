@@ -1,0 +1,55 @@
+.home{
+    display: grid;
+    gap: 40px;
+    grid-template-rows: 137px 137px 210px 290px;
+    grid-template-areas:
+        "A A A A   A A B B   B B C C"
+        "A A A A   A A B B   B B D D"
+        "E E E E   E E E E   E E E E"
+        "F F F F   F F G G   H H H H";
+
+    &>div{
+        background-color: var(--background-color-secondary);
+        border-radius: 13px;
+    }
+
+    &__banner{
+        grid-area: A;
+        background: var(--color-purple-gradient);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &-text{
+            
+        }
+    }
+
+    &__daily-progress{
+        grid-area: B;
+    }
+
+    &__time{
+        grid-area: C;
+    }
+
+    &__date{
+        grid-area: D;
+    }
+
+    &__posts{
+        grid-area: E;
+    }
+
+    &__pets{
+        grid-area: F;
+    }
+
+    &__write-now{
+        grid-area: G;
+    }
+
+    &__stats-pet{
+        grid-area: H;
+    }
+}
