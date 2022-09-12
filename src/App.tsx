@@ -14,7 +14,7 @@ import StartScreen from './pages/StartScreen/StartScreen';
 import RegisterPage from './pages/AuthPage/RegisterPage';
 import AuthPage from './pages/AuthPage/AuthPage';
 import { BLOG_ROUTE, CHAT_ROUTE, ERROR_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PETS_DETAIL, PETS_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE, START_ROUTE } from './utils/constRoutes';
-import { useGetPetsQuery, useGetPostsQuery, useGetStatisticQuery } from './store/services/PetsService';
+import { useGetGroupsQuery, useGetPetsQuery, useGetPostsQuery, useGetStatisticQuery } from './store/services/PetsService';
 
 export default function App() {
     const dispatch = useAppDispatch();
@@ -22,6 +22,7 @@ export default function App() {
     useGetPetsQuery();
     useGetPostsQuery();
     useGetStatisticQuery();
+    useGetGroupsQuery();
     
     const subscribeChangeScreen = () =>{
         dispatch(changeScreen(window.innerWidth))
@@ -46,7 +47,7 @@ export default function App() {
             <Route element={<Layout />}>
                 <Route path={HOME_ROUTE.path} element={<Home />} />
                 <Route path={PETS_ROUTE.path} element={<Pets />} />
-                <Route path={PETS_DETAIL.path} element={<PetsDetail />} />
+                <Route path={PETS_DETAIL.path + '/:id'} element={<PetsDetail />} />
                 <Route path={PROFILE_ROUTE.path} element={<Profile />} />
                 <Route path={CHAT_ROUTE.path} element={<Chat />} />
                 <Route path={BLOG_ROUTE.path} element={<Blog />} />

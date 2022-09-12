@@ -23,17 +23,17 @@ export interface Pet {
     price?: number
 }
 
+export interface Graphic{
+    id: number,
+    views: number,
+    likes: number
+}
+
 export interface Statistic {
     name: string,
     img: string,
     likes: number,
-    graphic: [
-        {
-            id: number,
-            views: number,
-            likes: number
-        }
-    ]
+    graphic: Graphic[]
 }
 
 export interface Group{

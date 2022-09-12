@@ -12,7 +12,7 @@ export const PETS_ROUTE = {
 }
 
 export const PETS_DETAIL = {
-    path: '/pets/:id',
+    path: '/pets',
     title: 'Питомцы'
 }
 

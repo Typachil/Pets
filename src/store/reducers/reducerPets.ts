@@ -24,7 +24,7 @@ const petsSlice = createSlice({
         builder.addMatcher(
             petsAPI.endpoints.getPets.matchFulfilled,
             (state, {payload}) => {
-                state.pets = payload
+                state.pets = Object.values(payload)
             }
         ),
         builder.addMatcher(

@@ -1,0 +1,110 @@
+.progress-daily{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+
+    &__percent{
+        font-size: 40px;
+        fill: var(--accent-secondary-color);
+
+        @media screen and (max-width: 767px) {
+            font-size: 14px;
+        }
+    }
+
+    & .main-pie{   
+        stroke: var(--pie-main-color);
+    }
+
+    & .success-pie{
+        stroke: var(--color-succes)
+    }
+
+    & .halfСomplete-pie{
+        stroke: var(--color-yellow)
+    }
+
+    & .cancel-pie{
+        stroke: var(--color-danger)
+    }
+
+    circle{
+        stroke-linecap: round;
+        stroke-width: 20px;
+        transform-origin: 50% 50%;
+        transform: rotateZ(270deg);
+
+        @media screen and (max-width: 767px) {
+            stroke-width: 10px;
+        }
+    }
+
+    &__goals-list{
+        overflow-x: hidden;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        h5{
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        @media screen and (max-width: 767px) {
+            font-size: 12px;
+            h5{
+                font-size: 12px;
+            }
+        }
+    }
+
+    &__goals-item{
+        margin-top: 10px;
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        span{
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        &_cancel{
+            span{
+                background: no-repeat center url('/public/img/icons/Cross.png');
+                background-color: var(--color-danger);
+            }
+        }
+
+        &_complete{
+            span{
+                background: no-repeat center url('/public/img/icons/Check.png');
+                background-color: var(--color-succes);
+            }
+        }
+
+        &_half-complete{
+            span{
+                background: no-repeat center url('/public/img/icons/Check.png');
+                background-color: var(--color-yellow);
+            }
+        }
+
+        &_in-progress{
+            span{
+                background-color: var(--color-primary);
+            }
+        }
+    }
+
+    @media screen and (max-width: 767px) {
+        background-color: var(--background-color-secondary);
+        padding: 17px;
+    }
+}

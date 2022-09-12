@@ -1,0 +1,78 @@
+.write-now {
+    padding: 30px;
+    display: grid;
+    column-gap: 10px;
+    row-gap: 35px;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 60px 60px auto;
+    border-radius: 16px;
+    justify-content: center;
+
+    &__user {
+        &_bacground-1{
+            background: var(--color-purple-gradient);
+        }
+        &_bacground-2{
+            background: var(--color-yellow-gradient);
+        }
+        &_bacground-3{
+            background: var(--color-orange-gradient);
+        }
+        &_bacground-4{
+            background: var(--color-pink-gradient);
+        }
+        &_bacground-5{
+            background: var(--color-green-gradient);
+        }
+    }
+
+    &__button {
+        width: 200px !important;
+        justify-self: stretch;
+        font-weight: 700;
+        font-size: 14px !important;
+
+        @media screen and (max-width: 1919px) {
+            width: 150px !important;
+        }
+
+        @media screen and (max-width: 1279px) {
+            width: 225px !important;
+        }
+
+        @media screen and (max-width: 767px) {
+            width: 265px !important;
+            justify-self: end;
+        }
+    }
+
+    &__add-user {
+        border: 2px dashed #ffffff;
+        border-radius: 50%;
+        font-weight: 700;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 1919px) {
+        gap: 20px;
+        grid-template-columns: 60px 60px;
+    }
+
+    @media screen and (max-width: 1279px) {
+        row-gap: 50px;
+        grid-template-columns: 60px 60px auto;
+    }
+
+    @media screen and (max-width: 767px) {
+        column-gap: 10px;
+        row-gap: 35px;
+        padding: 30px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: start;
+    }
+}

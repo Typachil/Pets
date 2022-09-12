@@ -5,6 +5,7 @@
     border: none;
     background-color: var(--color-primary);
     position: relative;
+    cursor: pointer;
 
     &::before,
     &::after {

@@ -6,18 +6,15 @@ interface State {
 }
 
 const changeScreenType = (width : number) =>{
-    if (width <= 768) return 'mobile';
-    if (width <= 1280 && width > 768) return 'tablet';
-    if (width < 1920 && width > 1280) return 'laptop';
+    if (width < 768) return 'mobile';
+    if (width < 1280 && width >= 768) return 'tablet';
+    if (width < 1920 && width >= 1280) return 'laptop';
     if (width >= 1920) return 'desktop';
 }
 
 const getTheme = () => {
     const theme = `${window?.localStorage?.getItem('theme')}`;
     if(theme === 'dark') return 'dark';
-
-    // const userMedia = window.matchMedia('(prefers-color-scheme: light)');
-    // if (userMedia.matches) return 'light';
 
     return 'light';
 };

@@ -1,0 +1,66 @@
+.time-metrics{
+    display: grid;
+    gap: 40px;
+
+    .time, .date {
+        background-color: var(--background-color-secondary);
+        padding: 30px 0 30px 30px;
+        border-radius: 16px;
+        font-size: 32px;
+
+        @media screen and (max-width: 1919px) {
+            font-size: 24px;
+        }
+    }
+    
+    &__icon {
+        width: 32px;
+        height: 32px;
+        background-color: var(--color-primary);
+        border-radius: 8px;
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+    }
+
+    .time{
+        &__timer {
+            font-weight: 500;
+            margin-top: 10px;
+        }
+    }
+    
+    .date {    
+        &__calendar {
+            font-weight: 700;
+            margin-top: 10px;
+            line-height: 32px;
+        }
+    }
+
+    @media screen and (max-width: 1919px) {
+        gap: 20px
+    }
+
+    @media screen and (max-width: 1279px) {
+        display: block;
+        padding: 15px;
+        background-color: var(--background-color-secondary);
+        border-radius: 16px;
+
+        .time, .date {
+            padding: 0;     
+        }
+
+        .time{
+            padding-bottom: 15px;
+        }
+    }
+}

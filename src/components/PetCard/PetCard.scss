@@ -1,0 +1,74 @@
+.pet-card{
+
+    cursor: pointer;
+    color: var(--text-color);
+
+    img{
+        border-radius: 16px;
+    }
+
+    &__info{
+        padding: 30px;
+        padding-top: 15px;
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+
+    &__name{
+
+        h5{
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        span{
+            display: inline-block;
+            padding: 2px 10px;
+            background-color: var(--color-primary);
+            border-radius: 15px;
+            margin-top: 15px;
+            font-size: 15px;
+            color: var(--color-primary-light)
+        }
+    }
+
+    &__likes{
+        align-self: end;
+        justify-self: end;
+        font-size: 15px;
+
+        span{
+            margin-right: 15px;
+        }
+
+        button{
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    &__like-button{
+        
+        &_clicked{
+            animation: animate-likes 1s;
+            path{
+                fill: #F16063;
+            }
+        }
+
+        @keyframes animate-likes {
+            from {
+                transform: scale(1)
+            }
+
+            to{
+                transform: scale(1);
+            }
+
+            50%{
+                transform: scale(1.5);
+            }
+        }
+    }
+}

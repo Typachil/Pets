@@ -26,17 +26,19 @@ export default function Sidebar() {
         <div className='sidebar'>
             <div className='sidebar-navigate'>
                 <Link to='#' className='sidebar-navigate__logo'>
-                    <Logo size='sm' theme={theme} />
+                    <Logo size='sm' theme={theme}/>
                 </Link>
                 {navItemsArr.map((item, index) => {
                     return (
-                        <NavLink key={index} to={item.path} className='sidebar-navigate__link'>
+                        <NavLink key={index} to={item.path} 
+                            className='sidebar-navigate__link'
+                            data-svg="link">
                             {item.icon}
                         </NavLink>
                     )
                 })} 
             </div>
-            <button onClick={logoutUser} className='sidebar-navigate__logout'>
+            <button onClick={logoutUser} className='sidebar-navigate__logout' data-svg="link">
                 <LogoutIcon />
             </button>
         </div>

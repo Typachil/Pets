@@ -38,26 +38,28 @@
             margin-bottom: 30px;
         }
 
-        .active{
-            background-color: var(--color-primary);
-
+        &__link, &__logout{
             svg{
                 path[stroke]{
-                    stroke: var(--color-primary-light);
+                    stroke: var(--text-color);
                 }
                 path[fill]{
-                    fill: var(--color-primary-light);
+                    fill: var(--text-color);
                 }
             }
         }
     }
 
-    svg{
-        path[stroke]{
-            stroke: var(--text-color);
-        }
-        path[fill]{
-            fill: var(--text-color);
+    .active{
+        background-color: var(--color-primary);
+
+        svg{
+            path[stroke]{
+                stroke: var(--color-primary-light);
+            }
+            path[fill]{
+                fill: var(--color-primary-light);
+            }
         }
     }
 }

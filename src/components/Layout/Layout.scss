@@ -1,9 +1,7 @@
 .wrapper-layout{
-    padding-left: 130px;
-    padding-right: 30px;
-    padding-top: 155px;
+    padding: 170px 30px 30px 130px;
 
     &_mobile{
-        padding: 115px 25px 0 25px;
+        padding: 115px 25px 30px 25px;
     }
 }
