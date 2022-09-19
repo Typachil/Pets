@@ -6,7 +6,6 @@ import Avatar from '../../components/UI/Avatar/Avatar';
 import 'swiper/scss/navigation';
 import 'swiper/scss';
 import SwiperCustom from '../../components/SwiperCustom/SwiperCustom';
-import Button from '../../components/UI/Button/Button';
 import PetCard from '../../components/PetCard/PetCard';
 import HomeProgress from '../../components/HomeProgress/HomeProgress';
 import HomeStatistic from '../../components/HomeStatistic/HomeStatistic';
@@ -18,19 +17,6 @@ export default function Home() {
     const { user } = useAppSelector((state) => state.reducerUser);
     const { posts, pets } = useAppSelector((state) => state.reducerPets);
     const { screen } = useAppSelector((state) => state.reducerUI);
-
-    const calculateViewForPosts = (): number => {
-        if (screen === 'tablet' || screen === 'laptop') return 2;
-        if (screen === 'mobile') return 1;
-        return 4;
-    };
-
-    const calculateSpaceForSliders = (): number => {
-        if (screen === 'tablet') return 30;
-        if (screen === 'laptop') return 20;
-        if (screen === 'mobile') return 10;
-        return 40;
-    };
 
     return (
         <div className='home'>
@@ -63,14 +49,30 @@ export default function Home() {
             )}
             <div className='home-posts'>
                 <SwiperCustom
-                    slidesPerView={calculateViewForPosts()}
-                    spaceBetween={calculateSpaceForSliders()}
+                    breakpoints= {{
+                        1920: {
+                            slidesPerView: 4,
+                            spaceBetween: 40
+                        },
+                        1280: {
+                            slidesPerView: 2,
+                            spaceBetween: 20
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 30
+                        },
+                        376: {
+                            slidesPerView: 1,
+                            spaceBetween: 10
+                        }
+                    }}
                     customContollers={screen === 'mobile' ? false : true}>
                     {posts?.map((item) => {
                         const { id, body, time, author, status, avatar } = item;
                         return (
-                            <SwiperSlide className='home-posts__item' key={id}>
-                                <div>
+                            <SwiperSlide className='home-posts__slide' key={id}>
+                                <div className='home-posts__item'>
                                     <div className='home-posts__item-header'>
                                         <Avatar
                                             name={author}
@@ -93,31 +95,40 @@ export default function Home() {
             </div>
             <div className='home-pets'>
                 <SwiperCustom
-                    slidesPerView={screen === 'mobile' ? 1 : 2} 
-                    spaceBetween={calculateSpaceForSliders()}
+                    breakpoints= {{
+                        1920: {
+                            slidesPerView: 2,
+                            spaceBetween: 40
+                        },
+                        1280: {
+                            slidesPerView: 2,
+                            spaceBetween: 20
+                        },
+                        768: {
+                            slidesPerView: 2,
+                            spaceBetween: 40
+                        },
+                        376: {
+                            slidesPerView: 1,
+                            spaceBetween: 10
+                        }
+                    }}
                     customContollers={screen === 'mobile' ? false : true}>
-                    {pets?.map((item, index) => {
-                        const { age, name, previewImg, likes, groupID, sex } = item;
+                    {pets?.map((item) => {
                         return (
-                            <SwiperSlide className='home-pets__item' key={index}>
+                            <SwiperSlide className='home-pets__item' key={item.id}>
                                 <PetCard
-                                    id={index}
-                                    age={age}
-                                    name={name}
-                                    previewImg={previewImg}
-                                    likes={likes}
-                                    groupID={groupID}
-                                    sex={sex}
+                                    {...item}
                                 />
                             </SwiperSlide>
                         );
                     })}
                 </SwiperCustom>
             </div>
-            <div className='home-writeNow'>
+            <div className='home-write__now'>
                 <HomeWriteNow />
             </div>
-            <div className='home-statsPet'>
+            <div className='home-stats__pet'>
                 <HomeStatistic />
             </div>
         </div>

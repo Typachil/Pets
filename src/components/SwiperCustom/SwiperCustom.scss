@@ -2,21 +2,32 @@
     position: relative;
 
     &_scrollability{
-        &::after{
+        &-right::after, &-left::before{
             position: absolute;
             content: '';
             top:0;
-            right: -5px;
             height: 100%;
             width: 90px;
-            background: linear-gradient(to left, var(--background-color) 75%, transparent);
-            z-index: 1;
+            z-index: 2;
+        }
+        &-right{
+            &::after{              
+                right: -5px;
+                background: linear-gradient(to left, var(--background-color) 75%, transparent);
+            }
+        }
+
+        &-left{
+            &::before{
+                left: -5px;
+                background: linear-gradient(to right, var(--background-color) 75%, transparent);
+            }
         }
     }
 
     &__button-next, &__button-prev{
         position: absolute;
-        z-index: 2;
+        z-index: 5;
         top: 40%;
     }
 

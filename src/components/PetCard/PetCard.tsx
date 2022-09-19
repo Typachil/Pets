@@ -1,4 +1,5 @@
-import React, { FC, useState } from 'react';
+import React, { FC, forwardRef, useState } from 'react';
+import classNames from 'classnames';
 import './PetCard.scss';
 import IconLike from './icons/Like.svg';
 import { useAppSelector } from '../../hooks/redux';
@@ -15,6 +16,8 @@ interface propsPetCard{
     sex: boolean;
     classes?: string;
 }
+
+export type Ref = HTMLDivElement
 
 const calculateAge = (type:string, date: string, sex: boolean) : string => {
     const todayDate = new Date().getFullYear();
@@ -43,7 +46,7 @@ const calculateAge = (type:string, date: string, sex: boolean) : string => {
     }
 }
 
-const PetCard:FC<propsPetCard> = ({
+const PetCard = forwardRef<Ref, propsPetCard>(({
     id,
     age,
     name,
@@ -51,10 +54,11 @@ const PetCard:FC<propsPetCard> = ({
     likes,
     groupID,
     sex,
-    classes
-}) => {
+    classes},
+    ref
+)=> {
     const navigate = useNavigate();
-    const [likedPost, setLikedPost] = useState(false);
+    const [likedPost, setLikedPost] = useState<boolean>(false);
     const {groups} = useAppSelector(state => state.reducerPets);
     const typeName = groups?.filter((item) => item.id === groupID)[0].name;
 
@@ -63,8 +67,10 @@ const PetCard:FC<propsPetCard> = ({
         setLikedPost(!likedPost)
     }
 
+    const computedClasses = classNames('pet-card', classes)
+
     return (
-        <div className='pet-card' onClick={() => navigate(PETS_DETAIL.path + `/${id}`)}>
+        <div ref={ref} className={computedClasses} onClick={() => navigate(PETS_DETAIL.path + `/${id}`)}>
             <img src={previewImg} alt='petImage' />
             <div className='pet-card__info'>
                 <div className='pet-card__name'>
@@ -80,6 +86,6 @@ const PetCard:FC<propsPetCard> = ({
             </div>
         </div>
     );
-}
+});
 
 export default PetCard;

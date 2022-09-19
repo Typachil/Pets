@@ -71,7 +71,7 @@ export default function RegisterPage() {
                             errorMessage={formPassword.errorMessage}
                             value={formPassword.value} />
                         <Button 
-                            disabled={formName.errorMessage || formEmail.errorMessage || formPassword.errorMessage}
+                            disabled={Boolean(formName.errorMessage || formEmail.errorMessage || formPassword.errorMessage)}
                             onClick={registrationUser}>
                             Зарегистрироваться
                         </Button>

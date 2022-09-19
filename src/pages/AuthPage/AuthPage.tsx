@@ -49,7 +49,7 @@ export default function AuthPage() {
                             errorMessage={formPassword.errorMessage}
                             value={formPassword.value} />
                         <Button 
-                            disabled={formEmail.errorMessage || formPassword.errorMessage}
+                            disabled={Boolean(formEmail.errorMessage || formPassword.errorMessage)}
                             onClick={loginUser}>Войти</Button>
                     </form>
                     <div className='auth-redirect'>

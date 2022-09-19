@@ -8,7 +8,7 @@ import { HOME_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE } from '../../utils/constRo
 import './StartScreen.scss'
 
 export default function StartScreen() {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState<boolean>(true);
     const navigate = useNavigate();
     const {screen, theme} = useAppSelector(state => state.reducerUI)
     const {user} = useAppSelector(state => state.reducerUser)

@@ -8,6 +8,7 @@ export interface Post {
 }
 
 export interface Pet {
+    id: number
     name: string;
     age: string;
     about: string;
@@ -39,4 +40,5 @@ export interface Statistic {
 export interface Group{
     id: number;
     name: string;
+    search?: string;
 }

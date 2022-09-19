@@ -13,8 +13,8 @@ import ModalNav from '../ModalNav/ModalNav';
 export default function Header() {
     const { theme, screen } = useAppSelector((state) => state.reducerUI);
     const { user } = useAppSelector((state) => state.reducerUser);
-    const [visibleModal, setVisibleModal] = useState(false);
-    const [notification, setNotification] = useState(true);
+    const [visibleModal, setVisibleModal] = useState<boolean>(false);
+    const [notification, setNotification] = useState<boolean>(true);
     const dispatch = useAppDispatch();
     const location = useLocation();
 

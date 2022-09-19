@@ -47,7 +47,7 @@
     }
 
     &__add-user {
-        border: 2px dashed #ffffff;
+        border: 2px dashed var(--accent-secondary-color);
         border-radius: 50%;
         font-weight: 700;
         width: 60px;

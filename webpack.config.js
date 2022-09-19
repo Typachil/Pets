@@ -8,9 +8,11 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[hash].js',
+        publicPath: '/',
     },
     devServer: {
         historyApiFallback: true,
+        
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],

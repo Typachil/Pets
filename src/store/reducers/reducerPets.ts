@@ -7,24 +7,41 @@ export interface State{
     pets: Pet[] | null;
     statistic: Statistic[] | null;
     groups: Group[] | null;
+    limitPets: Pet[] | null;
+    petPage: Pet | null;
 }
 
 const initialState: State = {
     posts: null,
     pets: null,
     statistic: null,
-    groups: null
+    groups: null,
+    limitPets: null,
+    petPage: null,
 }
 
 const petsSlice = createSlice({
     name: 'pets',
     initialState,
-    reducers: {},
+    reducers: {
+        setLimitPets(state, action : PayloadAction<number>){
+            const lengthPets = state.limitPets?.length || 0;
+            const limit = lengthPets >= action.payload ? lengthPets + action.payload : action.payload;
+            state.limitPets = state.pets?.slice(0, limit)         
+        },
+        setPetPage(state, action: PayloadAction<number>){
+            state.petPage = state.pets?.find(item => item.id === action.payload)
+            console.log(state.pets)
+        }
+    },
     extraReducers: (builder) => {
         builder.addMatcher(
             petsAPI.endpoints.getPets.matchFulfilled,
             (state, {payload}) => {
-                state.pets = Object.values(payload)
+                state.pets = Object.values(payload).map((item, index) => {
+                    item.id = index + 1
+                    return item;
+                })
             }
         ),
         builder.addMatcher(
@@ -48,6 +65,6 @@ const petsSlice = createSlice({
     }
 })
 
-export const {} = petsSlice.actions;
+export const {setLimitPets, setPetPage} = petsSlice.actions;
 
 export default petsSlice.reducer;

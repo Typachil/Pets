@@ -1,10 +1,11 @@
 .pet-card{
-
     cursor: pointer;
     color: var(--text-color);
 
     img{
         border-radius: 16px;
+        object-fit: cover;
+        width: 100%;
     }
 
     &__info{

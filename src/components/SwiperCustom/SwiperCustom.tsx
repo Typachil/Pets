@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Swiper } from 'swiper/react';
+import { Swiper, SwiperProps } from 'swiper/react';
 import SwiperButtonNext from './SwiperButtonNext';
 import SwiperButtonPrev from './SwiperButtonPrev';
 import classNames from 'classnames';
@@ -7,28 +7,24 @@ import './SwiperCustom.scss'
 
 interface propsSwiperCustom{
     children: React.ReactNode
-    slidesPerView: number
-    spaceBetween?: number
     customContollers?: boolean
 }
 
-const SwiperCustom : FC<propsSwiperCustom> = ({
+const SwiperCustom : FC<propsSwiperCustom & SwiperProps> = ({
     children,
-    slidesPerView,
-    spaceBetween,
-    customContollers
+    customContollers,
+    ...attrs
 }) => {
-    const [swiperEnd, setSwiperEnd] = useState(true);
-    const [swiperStart, setSwiperStart] = useState(true);
+    const [swiperEnd, setSwiperEnd] = useState<boolean>(true);
+    const [swiperStart, setSwiperStart] = useState<boolean>(true);
 
     const computedClasses = classNames('swiper-custom', {
-        'swiper-custom_scrollability': customContollers && !swiperEnd
+        'swiper-custom_scrollability-right': customContollers && !swiperEnd,
+        'swiper-custom_scrollability-left': customContollers && !swiperStart,
     })
 
     return (
         <Swiper
-            spaceBetween={spaceBetween}
-            slidesPerView={slidesPerView}
             onAfterInit={() => {
                 setSwiperEnd(false)
             }}
@@ -40,6 +36,7 @@ const SwiperCustom : FC<propsSwiperCustom> = ({
                     setSwiperStart(false)
                 }
             }}
+            {...attrs}
             className={computedClasses}>
                 {customContollers && !swiperStart && <SwiperButtonPrev />}
                 {children}

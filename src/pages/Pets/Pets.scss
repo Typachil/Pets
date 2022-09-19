@@ -1,0 +1,105 @@
+.pets-page{
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    @media screen and (max-width: 1279px) {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    &__group{
+        max-width: 260px;
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        @media screen and (max-width: 1919px) {
+            flex-direction: column;
+        }
+        @media screen and (max-width: 1279px) {
+            flex-direction: row;
+            flex-wrap: nowrap;
+            max-width: none;
+            justify-content: space-between;
+        }
+        &-item{
+            width: 73px;
+            height: 73px;
+            border-radius: 5px;
+            background-color: var(--background-color-secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 10px;
+            text-decoration: none;
+            color: var(--text-color);
+            cursor: pointer;
+            border: none;
+
+            @media screen and (max-width: 1919px) {
+                width: 95px;
+                height: 95px;
+            }
+
+            span{
+                margin-top: 5px;
+            }
+
+            &_active{
+                background-color: var(--color-primary);
+            }
+        }
+    }
+
+    &__item{
+        &-icon{
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: var(--color-primary);
+
+            &_backround-Dog{
+                background-image: url('/public/img/petsPage/Dog.png');
+            }
+            &_backround-Cat{
+                background-image: url('/public/img/petsPage/Cat.png');
+            }
+            &_backround-Bird{
+                background-image: url('/public/img/petsPage/Bird.png');
+            }
+            &_backround-Mouse{
+                background-image: url('/public/img/petsPage/Mouse.png');
+            }
+            &_backround-Rabbit{
+                background-image: url('/public/img/petsPage/Rabbit.png');
+            }
+            &_backround-Other{
+                background-image: url('/public/img/petsPage/Other.png');
+            }          
+        }
+    }
+
+    &__masonry{
+        &-grid{
+            display: flex;
+            width: 100%;
+            gap: 40px;
+        }
+
+        &-column{
+            &>div{
+                margin-bottom: 40px;
+            }
+        }
+        &-item{
+            background-color: var(--background-color-secondary);
+            border-radius: 16px;
+            img{
+                min-height: 140px;
+            }
+        }
+    }
+}

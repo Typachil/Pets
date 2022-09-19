@@ -8,9 +8,9 @@ import './HomeStatistic.scss';
 export default function HomeStatistic() {
     const { statistic } = useAppSelector((state) => state.reducerPets);
     const [currentPetStatistic, setCurrentPetStatistic] = useState(0);
-    const [namePet, setNamePet] = useState(null);
-    const [likesPet, setLikesPet] = useState(null);
-    const [graphicPet, setGraphicPet] = useState(null);
+    const [namePet, setNamePet] = useState<string>(null);
+    const [likesPet, setLikesPet] = useState<number>(null);
+    const [graphicPet, setGraphicPet] = useState<Graphic[]>(null);
     const [valueViewsAverage, setValueViewsAverage] = useState(0);
     const [valueLikesAverage, setValueLikesAverage] = useState(0);
 
@@ -51,7 +51,6 @@ export default function HomeStatistic() {
     }
 
     const calculateHeight = (amount : number, average : number) : number => {
-        console.log(average)
         return (average / 100) * amount * heightMainColumn;
         // return (heightMainColumn / 100) * (average / amount);
     }

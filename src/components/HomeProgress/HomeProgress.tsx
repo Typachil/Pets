@@ -6,8 +6,8 @@ import './HomeProgress.scss';
 export default function HomeProgress() {
     const { userGoals } = useAppSelector(state => state.reducerUser);
     const { screen } = useAppSelector(state => state.reducerUI)
-    const [sizeSvg, setSizeSvg] = useState(255)
-    const [radiusCircle, setRadiusCircle] = useState(117)
+    const [sizeSvg, setSizeSvg] = useState<number>(255)
+    const [radiusCircle, setRadiusCircle] = useState<number>(117)
     const dispatch = useAppDispatch();
 
     const PI = Math.PI;

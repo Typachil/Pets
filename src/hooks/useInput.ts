@@ -8,8 +8,8 @@ interface ValidationType{
 }
 
 const useValidation = (value : string, validations : ValidationType = {isEmpty: true}, isDirty: boolean) => {
-    const [inputValid, setInputValid] = useState(true);
-    const [errorMessage, setErrorMessage] = useState(null)
+    const [inputValid, setInputValid] = useState<boolean>(true);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
     useEffect(() => {
         if(isDirty){
@@ -57,12 +57,12 @@ const useValidation = (value : string, validations : ValidationType = {isEmpty: 
 }
 
 export default function useInput(initialValue : string, validations? : ValidationType) {
-    const [value, setValue] = useState(initialValue);
-    const [isDirty, setDirty] = useState(false);
+    const [value, setValue] = useState<string>(initialValue);
+    const [isDirty, setDirty] = useState<boolean>(false);
     const valid = useValidation(value, validations, isDirty);
 
     const onChange = (e : ChangeEvent <HTMLInputElement>) => {
-        setValue(e.target.value)
+        setValue(e?.target.value)
     }
 
     const onBlur = () => {

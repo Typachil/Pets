@@ -23,7 +23,7 @@ const Select: FC<ISelectProps & React.HTMLAttributes<HTMLDivElement>> = ({
     onChange,
     ...attrs
 }) => {
-    const [openSelect, setOpenSelect] = useState(false);
+    const [openSelect, setOpenSelect] = useState<boolean>(false);
 
     let computedClasses = classNames(
         '__select',
