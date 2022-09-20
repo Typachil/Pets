@@ -13,6 +13,7 @@ import ModalNav from '../ModalNav/ModalNav';
 export default function Header() {
     const { theme, screen } = useAppSelector((state) => state.reducerUI);
     const { user } = useAppSelector((state) => state.reducerUser);
+    const { petPage } = useAppSelector(state => state.reducerPets)
     const [visibleModal, setVisibleModal] = useState<boolean>(false);
     const [notification, setNotification] = useState<boolean>(true);
     const dispatch = useAppDispatch();
@@ -24,10 +25,10 @@ export default function Header() {
         if (route.length) {
             heading = route[0].title;
         }
-        if (location.pathname.includes(PETS_DETAIL.path)) heading = PETS_DETAIL.title;
+        if (location.pathname.includes(PETS_DETAIL.path + '/')) heading = PETS_DETAIL.title + '\\' + petPage?.name;
         return heading;
     };
-    const memoChangeHeading = useMemo(() => changeHeading(), [location.pathname]);
+    const memoChangeHeading = useMemo(() => changeHeading(), [location.pathname, petPage]);
 
     const handleChange = () => {
         const next = theme === 'dark' ? 'light' : 'dark';

@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, useState } from 'react';
+import React, { FC, forwardRef, LegacyRef, useState } from 'react';
 import classNames from 'classnames';
 import './PetCard.scss';
 import IconLike from './icons/Like.svg';
@@ -14,6 +14,7 @@ interface propsPetCard{
     likes: number;
     groupID: number;
     sex: boolean;
+    cardRef?: LegacyRef<HTMLDivElement>;
     classes?: string;
 }
 
@@ -46,7 +47,7 @@ const calculateAge = (type:string, date: string, sex: boolean) : string => {
     }
 }
 
-const PetCard = forwardRef<Ref, propsPetCard>(({
+const PetCard : FC<propsPetCard> = ({
     id,
     age,
     name,
@@ -54,8 +55,8 @@ const PetCard = forwardRef<Ref, propsPetCard>(({
     likes,
     groupID,
     sex,
-    classes},
-    ref
+    classes,
+    cardRef}
 )=> {
     const navigate = useNavigate();
     const [likedPost, setLikedPost] = useState<boolean>(false);
@@ -68,9 +69,8 @@ const PetCard = forwardRef<Ref, propsPetCard>(({
     }
 
     const computedClasses = classNames('pet-card', classes)
-
     return (
-        <div ref={ref} className={computedClasses} onClick={() => navigate(PETS_DETAIL.path + `/${id}`)}>
+        <div ref={cardRef} className={computedClasses} onClick={() => navigate(PETS_DETAIL.path + `/${id}`)}>
             <img src={previewImg} alt='petImage' />
             <div className='pet-card__info'>
                 <div className='pet-card__name'>
@@ -86,6 +86,6 @@ const PetCard = forwardRef<Ref, propsPetCard>(({
             </div>
         </div>
     );
-});
+};
 
 export default PetCard;

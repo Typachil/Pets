@@ -24,10 +24,11 @@ const petsSlice = createSlice({
     name: 'pets',
     initialState,
     reducers: {
-        setLimitPets(state, action : PayloadAction<number>){
-            const lengthPets = state.limitPets?.length || 0;
-            const limit = lengthPets >= action.payload ? lengthPets + action.payload : action.payload;
-            state.limitPets = state.pets?.slice(0, limit)         
+        setLimitPets(state, action : PayloadAction<Pet[]>){
+            // const lengthPets = state.limitPets?.length || 0;
+            // const limit = lengthPets >= action.payload ? lengthPets + action.payload : action.payload;
+            // state.limitPets = state.pets?.slice(0, limit)
+            state.limitPets = action.payload         
         },
         setPetPage(state, action: PayloadAction<number>){
             state.petPage = state.pets?.find(item => item.id === action.payload)

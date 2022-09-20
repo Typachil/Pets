@@ -83,17 +83,6 @@
     }
 
     &__masonry{
-        &-grid{
-            display: flex;
-            width: 100%;
-            gap: 40px;
-        }
-
-        &-column{
-            &>div{
-                margin-bottom: 40px;
-            }
-        }
         &-item{
             background-color: var(--background-color-secondary);
             border-radius: 16px;
