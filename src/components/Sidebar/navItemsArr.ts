@@ -12,14 +12,14 @@ export const navItemsArr = [
         path: HOME_ROUTE.path
     },
     {
-        icon: ProfileIcon,
-        title: 'Profile',
-        path: PROFILE_ROUTE.path
-    },
-    {
         icon: PetsIcon,
         title: 'Pets',
         path: PETS_ROUTE.path
+    },
+    {
+        icon: ProfileIcon,
+        title: 'Profile',
+        path: PROFILE_ROUTE.path
     },
     {
         icon: BlogIcon,

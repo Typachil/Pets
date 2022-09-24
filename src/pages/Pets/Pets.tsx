@@ -13,13 +13,12 @@ export default function Pets() {
     const dispatch = useAppDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
     const [formattedGroups, setFormattedGroups] = useState<Array<groupNamesType> | null>(null);
-    const [limitPagePets, setLimitPagePets] = useState<number>(null);
+    const [limitPagePets, setLimitPagePets] = useState<number>(0);
 
     const filterQuery = searchParams.get('filter') || null;
 
     useEffect(() => {
-        if (screen === 'tablet') setLimitPagePets(5);
-        if (screen === 'mobile') {
+        if (screen === 'mobile' || screen === 'tablet') {
             setLimitPagePets(3);
         } else {
             setLimitPagePets(10);

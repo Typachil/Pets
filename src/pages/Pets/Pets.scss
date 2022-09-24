@@ -86,7 +86,7 @@
         &-item{
             background-color: var(--background-color-secondary);
             border-radius: 16px;
-            img{
+            & > img{
                 min-height: 140px;
             }
         }

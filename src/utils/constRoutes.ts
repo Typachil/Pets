@@ -23,7 +23,7 @@ export const PROFILE_ROUTE = {
 
 export const CHAT_ROUTE = {
     path: '/chat',
-    title: 'Home'
+    title: 'Чат'
 }
 
 export const BLOG_ROUTE = {
