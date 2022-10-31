@@ -7,6 +7,7 @@ import { LOGIN_ROUTE } from '../../utils/constRoutes';
 import './ModalNav.scss';
 import { navItemsArr } from '../Sidebar/navItemsArr';
 import LogoutIcon from '../Sidebar/icons/Logout.svg';
+import { getAuth, signOut } from 'firebase/auth';
 
 interface PropsModal{
     visible? : boolean
@@ -16,10 +17,15 @@ interface PropsModal{
 const ModalNav:FC<PropsModal> = ({visible, onClick}) => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
+    const auth = getAuth();
 
     const logoutUser = () => {
-        dispatch(logout());
-        navigate(LOGIN_ROUTE);
+        signOut(auth).then(() => {
+            dispatch(logout());
+            navigate(LOGIN_ROUTE);
+        }).catch(error => {
+            console.log(error)
+        })
     };
 
     const modalClass = classNames('modal-nav', {

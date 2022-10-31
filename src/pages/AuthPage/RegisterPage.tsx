@@ -1,22 +1,25 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
 import Logo from '../../components/UI/Logo/Logo';
 import getRandomInt from '../../hooks/getRandomInt';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import useInput from '../../hooks/useInput';
-import { registration } from '../../store/reducers/reducerUser';
+import { setUser } from '../../store/reducers/reducerUser';
 import { HOME_ROUTE, LOGIN_ROUTE } from '../../utils/constRoutes';
 import './AuthPage.scss';
+import Alert from '../../components/UI/Alert/Alert';
 
 export default function RegisterPage() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate()
     const { theme, screen } = useAppSelector((state) => state.reducerUI);
+    const [errorReg, setErrorReg] = useState(null)
     const formName = useInput('');
     const formEmail = useInput('', { isEmail: true });
-    const formPassword = useInput('', { minLength: 4 });
+    const formPassword = useInput('', { minLength: 6 });
 
     const memoGetRandomInt = useMemo(() => getRandomInt(1, 4), [])
 
@@ -26,12 +29,25 @@ export default function RegisterPage() {
         formPassword.onBlur()
 
         if(formName.inputValid || formEmail.inputValid || formPassword.inputValid){
-            dispatch(registration({
-                name: formName.value, 
-                email: formEmail.value, 
-                password: formPassword.value
-            }))
-            navigate(HOME_ROUTE.path)
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, formEmail.value, formPassword.value)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                updateProfile(user, {
+                    displayName: formName.value
+                }).then(() => {
+                    dispatch(setUser({
+                        email: user.email,
+                        id: user.uid,
+                        token: user.refreshToken,
+                        name: user.displayName
+                    }))
+                    navigate(HOME_ROUTE.path)
+                })
+            })
+            .catch((error) => {
+                console.log(error)
+            });
         }
     }
 
@@ -69,10 +85,13 @@ export default function RegisterPage() {
                             onBlur={formPassword.onBlur}
                             valid={formPassword.inputValid}
                             errorMessage={formPassword.errorMessage}
-                            value={formPassword.value} />
+                            value={formPassword.value}
+                            type='password' />
+                        {/* <Alert classes='auth-form__alert' variant='error'>Ошибка</Alert> */}
                         <Button 
                             disabled={Boolean(formName.errorMessage || formEmail.errorMessage || formPassword.errorMessage)}
-                            onClick={registrationUser}>
+                            onClick={registrationUser}
+                            classes='auth-form__button'>
                             Зарегистрироваться
                         </Button>
                     </form>

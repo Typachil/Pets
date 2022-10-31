@@ -33,7 +33,7 @@ const Input: FC<IInputProps & React.InputHTMLAttributes<HTMLInputElement>> = ({
     return (
         <label className={computedClasses} >
             {label && <div className='label-default__text'>{label}</div>}
-            <input type='text' value={value}
+            <input value={value}
                 className='label-default__input' 
                 onChange={onChange}
                 placeholder={placeholder} 
