@@ -1,0 +1,74 @@
+.chat-list{
+    width: 410px;
+
+    &__header{
+        display: flex;
+        gap: 15px;
+        width: inherit;
+        height: 40px;
+
+        svg{
+            path{
+                fill: var(--text-color)
+            }
+        }
+    }
+
+    &__search{
+        background-color: var(--background-color-secondary);
+        flex-grow: 1;
+        height: 100%;
+        border-radius: 10px;
+        display: flex;
+        
+        svg{
+            padding: 12px;
+        }
+
+        input{
+            color: var(--text-color-secondary);
+            flex-grow: 1;
+            height: 100%;
+            background-color: inherit;
+            border: none;
+        }
+    }
+
+    &__create-talk{
+        background-color: var(--background-color-secondary);
+        border: none;
+        border-radius: 10px;
+        padding: 8px 10px 10px 11px; 
+    }
+
+    &__user{
+        display: flex;
+        background-color: var(--background-color-secondary);      
+        border-radius: 18px;
+        padding: 20px;
+        margin-top: 15px;
+
+        &-name{
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        &-message{
+            font-size: 14px;
+            color: var(--text-color-secondary);
+            margin-top: 5px;
+        }
+
+        &-info{
+            flex-grow: 1;
+            margin: 10px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        &-time{
+            margin: 10px 0;
+        }
+    }
+}

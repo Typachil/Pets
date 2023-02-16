@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, UserCredential } from 'firebase/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Input/Input';
@@ -15,7 +15,7 @@ import GoogleIcon from '../../assets/Google.svg';
 import GitHubIcon from '../../assets/GitHub.svg';
 import TwitterIcon from '../../assets/Twitter.svg';
 import FacebookIcon from '../../assets/Facebook.svg';
-import useSignWithSocial from '../../hooks/useSignWithSocial';
+import {useSignInWithGoogle} from 'react-firebase-hooks/auth';
 
 export default function AuthPage() {
     const { theme, screen } = useAppSelector((state) => state.reducerUI);
@@ -26,28 +26,30 @@ export default function AuthPage() {
     const navigate = useNavigate();
 
     const auth = getAuth();
-    const signWithSocial = useSignWithSocial(auth)
-
+    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const memoGetRandomInt = useMemo(() => getRandomInt(1, 4), []);
 
+    const dispatchUserResult = (result : UserCredential) => {
+        const token = result.user.refreshToken;
+        const user = result.user;
+        dispatch(
+            setUser({
+                email: user.email,
+                id: user.uid,
+                token: token,
+                name: user.displayName,
+            })
+        );
+        navigate(HOME_ROUTE.path);
+    }
+
     const loginUser = () => {
-        auth.languageCode = 'ru';
         formEmail.onBlur();
         formPassword.onBlur();
 
         signInWithEmailAndPassword(auth, formEmail.value, formPassword.value)
             .then((userCredential) => {
-                console.log(userCredential);
-                const user = userCredential.user;
-                dispatch(
-                    setUser({
-                        email: user.email,
-                        id: user.uid,
-                        token: user.refreshToken,
-                        name: user.displayName,
-                    })
-                );
-                navigate(HOME_ROUTE.path);
+                dispatchUserResult(userCredential)
             })
             .catch((error) => {
                 console.log(error.code);
@@ -58,6 +60,18 @@ export default function AuthPage() {
                 }
             });
     };
+
+    const loginUserWithGoogle = () => {
+        signInWithGoogle()
+        .then((result) => {
+            dispatchUserResult(result) 
+        }).catch((error) => {
+            console.log(error)
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            const email = error.customData.email;
+        })
+    }
 
     return (
         <div className='auth-block'>
@@ -108,7 +122,7 @@ export default function AuthPage() {
                     <div className='auth-media'>
                         <p>Войдите через:</p>
                         <div className='auth-media__icons'>
-                            <a href='#' onClick={() => {}} className='auth-media__icon'>
+                            <a href='#' onClick={() => loginUserWithGoogle()} className='auth-media__icon'>
                                 <GoogleIcon />
                             </a>
                             <a href='#' className='auth-media__icon'>

@@ -22,6 +22,7 @@ const ModalNav:FC<PropsModal> = ({visible, onClick}) => {
     const logoutUser = () => {
         signOut(auth).then(() => {
             dispatch(logout());
+            auth.signOut();
             navigate(LOGIN_ROUTE);
         }).catch(error => {
             console.log(error)

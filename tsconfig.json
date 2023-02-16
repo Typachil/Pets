@@ -1,18 +1,15 @@
 {
     "compilerOptions": {
-      "outDir": "./dist/",
-      "noImplicitAny": true,
-      "module": "esnext",
-      "target": "esnext",
-      "jsx": "react",
-      "allowJs": true,
-      "allowSyntheticDefaultImports": true,
-      "moduleResolution": "Node",
-      "declaration": true,
-      "lib": [
-        "es2022",
-        "dom"
-      ],
+        "outDir": "./dist/",
+        "noImplicitAny": true,
+        "module": "esnext",
+        "target": "esnext",
+        "jsx": "react",
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "Node",
+        "declaration": true,
+        "lib": ["es2022", "dom"]
     },
     "include": ["src", "custom.d.ts"]
-  }
+}

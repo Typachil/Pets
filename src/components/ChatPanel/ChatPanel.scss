@@ -1,0 +1,123 @@
+.chat-panel{
+    background-color: var(--background-color-secondary);
+    width: 860px;
+    margin-left: 40px;
+    border-radius: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+
+    &__header{
+        background-color: var(--color-primary);
+        border-radius: 13px 13px 0 0;
+        padding: 15px 30px;
+        display: flex;
+        justify-content: space-between;
+
+        &-name{
+            font-weight: 700;
+        }
+
+        &-stash{
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    &__messages{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 0 30px;
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            width: 0;
+        }
+    }
+
+    &__empty{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &>div{
+            text-align: center;
+        }
+
+        span{
+            font-weight: 700;
+        }
+    }
+
+    &__footer{
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 10px 30px;
+        border-top: 1px solid var(--accent-color);
+
+        button{
+            background: none;
+            cursor: pointer;
+            border: none;
+        }
+
+        input{
+            flex-grow: 1;
+            color: var(--text-color);
+            background-color: transparent;
+            border: none;
+        }
+    }
+}
+
+.message-friend{
+    display: flex;
+
+    &__body{
+        margin-left: 10px;
+    }
+
+    &__text{
+        padding: 12px;
+        border: 2px solid var(--color-primary);
+        border-radius: 13px 13px 13px 0px;
+    }
+
+    &__time{
+        font-size: 10px;
+    }
+}
+
+.message-avatar{
+    flex-shrink: 0;
+}
+
+.message-block{
+    margin: 15px 0;
+}
+
+.message-my{
+    display: flex;
+    align-self: flex-end;
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__text{
+        background-color: var(--color-primary);
+        padding: 12px;
+        border-radius: 13px 13px 0px 13px;
+    }
+
+    &__time{
+        font-size: 10px;
+        align-self: flex-end;
+    }
+}
