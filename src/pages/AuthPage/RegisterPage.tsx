@@ -11,6 +11,8 @@ import { setUser } from '../../store/reducers/reducerUser';
 import { HOME_ROUTE, LOGIN_ROUTE } from '../../utils/constRoutes';
 import './AuthPage.scss';
 import Alert from '../../components/UI/Alert/Alert';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 export default function RegisterPage() {
     const dispatch = useAppDispatch();
@@ -40,8 +42,15 @@ export default function RegisterPage() {
                         email: user.email,
                         id: user.uid,
                         token: user.refreshToken,
-                        name: user.displayName
+                        name: user.displayName,
+                        photoURL: user.photoURL
                     }))
+                    setDoc(doc(db, 'users', user.uid), {
+                        name: user.displayName,
+                        email: user.email,
+                        photoURL: user.photoURL,
+                        createdAt: serverTimestamp()
+                    });
                     navigate(HOME_ROUTE.path)
                 })
             })

@@ -47,6 +47,7 @@
         border-radius: 18px;
         padding: 20px;
         margin-top: 15px;
+        cursor: pointer;
 
         &-name{
             font-size: 16px;
@@ -69,6 +70,10 @@
 
         &-time{
             margin: 10px 0;
+        }
+
+        &_active{
+            background-color: var(--color-primary);
         }
     }
 }

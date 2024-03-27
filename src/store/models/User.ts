@@ -3,6 +3,7 @@ export interface User{
     email: string;
     token: string;
     id: string;
+    photoURL: string;
 }
 
 export interface userGoals{

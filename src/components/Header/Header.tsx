@@ -63,7 +63,7 @@ export default function Header() {
                     <button className={classNotification}>
                         <NotificationIcon viewBox='0 0 24 24' />
                     </button>
-                    <Avatar size={screen === 'mobile' ? 'xs' : 'sm'} name={user?.name} />
+                    <Avatar size={screen === 'mobile' ? 'xs' : 'sm'} name={user?.name} img={user?.photoURL}/>
                 </div>
             </div>
             {(screen === 'mobile' || screen === 'tablet') && (

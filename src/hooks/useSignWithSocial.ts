@@ -18,6 +18,7 @@ const dispatchUserResult = (result : UserCredential) => {
             id: user.uid,
             token: token,
             name: user.displayName,
+            photoURL: user.photoURL
         })
     );
     navigate(HOME_ROUTE.path);

@@ -16,6 +16,8 @@ import GitHubIcon from '../../assets/GitHub.svg';
 import TwitterIcon from '../../assets/Twitter.svg';
 import FacebookIcon from '../../assets/Facebook.svg';
 import {useSignInWithGoogle} from 'react-firebase-hooks/auth';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 export default function AuthPage() {
     const { theme, screen } = useAppSelector((state) => state.reducerUI);
@@ -38,6 +40,7 @@ export default function AuthPage() {
                 id: user.uid,
                 token: token,
                 name: user.displayName,
+                photoURL: user.photoURL
             })
         );
         navigate(HOME_ROUTE.path);

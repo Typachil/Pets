@@ -9,6 +9,7 @@ export interface State{
     groups: Group[] | null;
     limitPets: Pet[] | null;
     petPage: Pet | null;
+    currentDialog: string | null;
 }
 
 const initialState: State = {
@@ -18,6 +19,7 @@ const initialState: State = {
     groups: null,
     limitPets: null,
     petPage: null,
+    currentDialog: null
 }
 
 const petsSlice = createSlice({
@@ -32,7 +34,9 @@ const petsSlice = createSlice({
         },
         setPetPage(state, action: PayloadAction<number>){
             state.petPage = state.pets?.find(item => item.id === action.payload)
-            console.log(state.pets)
+        },
+        setCurrentDialog(state, action: PayloadAction<string>){
+            state.currentDialog = action.payload
         }
     },
     extraReducers: (builder) => {
@@ -66,6 +70,6 @@ const petsSlice = createSlice({
     }
 })
 
-export const {setLimitPets, setPetPage} = petsSlice.actions;
+export const {setLimitPets, setPetPage, setCurrentDialog} = petsSlice.actions;
 
 export default petsSlice.reducer;
